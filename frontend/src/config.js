@@ -1,22 +1,24 @@
 // API Configuration
-// For Docker: Use window.location.hostname to dynamically get the host
-// This way it works whether accessing via localhost, IP, or domain name
+// Automatically detects the hostname from browser URL and constructs backend API URL
 
 const getApiBaseUrl = () => {
-  // Check if running in development mode
-  if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_API_URL) {
-    return process.env.REACT_APP_API_URL;
-  }
-  
-  // In production or Docker, use the same host as the frontend
-  // This works for localhost, VM IP, or any hostname
-  const protocol = window.location.protocol;
+  // This code runs in the browser
   const hostname = window.location.hostname;
+  const protocol = window.location.protocol;
   
-  // Backend runs on port 8001
-  return `${protocol}//${hostname}:8001`;
+  // Backend always runs on port 8001
+  const apiUrl = `${protocol}//${hostname}:8001`;
+  
+  console.log('🔧 API Configuration:', {
+    frontendUrl: window.location.href,
+    hostname: hostname,
+    protocol: protocol,
+    apiUrl: apiUrl
+  });
+  
+  return apiUrl;
 };
 
 export const API_BASE_URL = getApiBaseUrl();
 
-console.log('🔧 API Configuration:', API_BASE_URL);
+console.log('📡 Final API_BASE_URL:', API_BASE_URL);
