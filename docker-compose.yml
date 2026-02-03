@@ -7,11 +7,13 @@ services:
     ports:
       - "8001:8001"
     volumes:
-      - ./Age.csv:/app/Age.csv
-      - ./Destination.csv:/app/Destination.csv
-      - ./MealTime.csv:/app/MealTime.csv
-      - ./Nationality.csv:/app/Nationality.csv
-      - ./PredictionResults:/app/PredictionResults
+      - ./Age.csv:/data/Age.csv
+      - ./Destination.csv:/data/Destination.csv
+      - ./MealTime.csv:/data/MealTime.csv
+      - ./Nationality.csv:/data/Nationality.csv
+      - ./customers.csv:/data/customers.csv
+      - ./meal_df_new.csv:/data/meal_df_new.csv
+      - ./PredictionResults:/data/PredictionResults
     environment:
       - PYTHONUNBUFFERED=1
     networks:

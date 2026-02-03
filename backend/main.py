@@ -156,7 +156,9 @@ def load_csv_defaults_once():
     return CSV_DEFAULTS_CACHE
 
 # Data directory
-DATA_DIR = os.path.join(os.path.dirname(__file__), "..")
+# In Docker: CSV files are mounted at /data
+# Locally: CSV files are one level up from backend/
+DATA_DIR = '/data' if os.path.exists('/data/customers.csv') else os.path.join(os.path.dirname(__file__), "..")
 PREDICTION_RESULTS_DIR = os.path.join(DATA_DIR, 'PredictionResults')
 
 
