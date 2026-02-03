@@ -20,8 +20,7 @@ import { Card, CardContent } from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import ResultsDisplay from '../components/ResultsDisplay';
-
-const API_BASE_URL = 'http://localhost:8001';
+import { API_BASE_URL } from '../config';
 
 const workflowSteps = [
   { 

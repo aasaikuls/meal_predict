@@ -10,8 +10,7 @@ import { Plane, Calendar, ArrowRight, Globe } from 'lucide-react';
 import axios from 'axios';
 import { Header, Container, PageTransition } from '../components/layout';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button, Label, Select, Input } from '../components/ui';
-
-const API_BASE_URL = 'http://localhost:8001';
+import { API_BASE_URL } from '../config';
 
 function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, setFlightDate }) {
   const navigate = useNavigate();
@@ -37,7 +36,7 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
     // Fetch flights from API (from customers.csv)
     const fetchFlights = async () => {
       try {
-        const response = await fetch('http://localhost:8001/api/flights');
+        const response = await fetch(`${API_BASE_URL}/api/flights`);
         const data = await response.json();
         
         console.log('Fetched flight data:', data);

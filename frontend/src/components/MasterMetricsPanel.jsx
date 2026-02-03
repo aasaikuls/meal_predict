@@ -22,8 +22,7 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:8001';
+import { API_BASE_URL } from '../config';
 
 function MasterMetricsPanel({ metrics, onMetricsUpdate, disabled }) {
   const [localMetrics, setLocalMetrics] = useState(metrics);

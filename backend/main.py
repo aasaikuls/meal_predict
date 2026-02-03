@@ -156,10 +156,31 @@ def load_csv_defaults_once():
     return CSV_DEFAULTS_CACHE
 
 # Data directory
-# In Docker: CSV files are mounted at /data
-# Locally: CSV files are one level up from backend/
-DATA_DIR = '/data' if os.path.exists('/data/customers.csv') else os.path.join(os.path.dirname(__file__), "..")
+# Check if running in Docker by looking for /data directory
+import sys
+if os.path.exists('/data'):
+    DATA_DIR = '/data'
+    print(f"🐳 Running in Docker - Using DATA_DIR: {DATA_DIR}")
+else:
+    DATA_DIR = os.path.join(os.path.dirname(__file__), "..")
+    print(f"💻 Running locally - Using DATA_DIR: {DATA_DIR}")
+
 PREDICTION_RESULTS_DIR = os.path.join(DATA_DIR, 'PredictionResults')
+
+# Log file locations on startup
+print(f"\n{'='*60}")
+print(f"DATA DIRECTORY CONFIGURATION")
+print(f"{'='*60}")
+print(f"DATA_DIR: {DATA_DIR}")
+print(f"PREDICTION_RESULTS_DIR: {PREDICTION_RESULTS_DIR}")
+print(f"Python executable: {sys.executable}")
+print(f"Script location: {__file__}")
+print(f"\nChecking for CSV files:")
+for csv_file in ['customers.csv', 'meal_df_new.csv', 'Age.csv', 'Destination.csv', 'MealTime.csv', 'Nationality.csv']:
+    full_path = os.path.join(DATA_DIR, csv_file)
+    exists = os.path.exists(full_path)
+    print(f"  {'✅' if exists else '❌'} {csv_file}: {full_path}")
+print(f"{'='*60}\n")
 
 
 # TEMPORARY SESSION MEMORY - Cache for current flight+date session only

@@ -13,8 +13,7 @@ import {
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:8001';
+import { API_BASE_URL } from '../config';
 
 function FlightSelector({ onPredictionStart, onPredictionComplete, masterMetrics, disabled }) {
   const [flightNumber, setFlightNumber] = useState('');

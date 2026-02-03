@@ -6,8 +6,7 @@ import Badge from './ui/Badge';
 import Button from './ui/Button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/Table';
 import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:8001';
+import { API_BASE_URL } from '../config';
 
 function ResultsDisplay({ results, selectedFlight, flightDate }) {
   console.log('[ResultsDisplay] Rendering with results:', results);

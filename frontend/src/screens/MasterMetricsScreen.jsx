@@ -27,8 +27,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import Container from '../components/layout/Container';
 import PageTransition from '../components/layout/PageTransition';
 import { useToast } from '../components/ui/Toast';
-
-const API_BASE_URL = 'http://localhost:8001';
+import { API_BASE_URL } from '../config';
 
 // Simple Accordion Component
 const Accordion = ({ children, expanded, onChange }) => {
