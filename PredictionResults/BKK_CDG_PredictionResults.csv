@@ -1,0 +1,361 @@
+segment,segment_local_departure_date,weekday,cabin_class,meal_time,meal_name,original_meal_count,original_passengers,original_percent,predicted_meal_count,predicted_total_passengers,predicted_percentage,protein_type
+BKK CDG,2025-04-02,Wednesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",24,62,38.71,18,61,29.51,Seafood
+BKK CDG,2025-04-02,Wednesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,38,62,61.29,43,61,70.49,Chicken
+BKK CDG,2025-04-02,Wednesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",38,62,61.29,43,61,70.49,Chicken
+BKK CDG,2025-04-02,Wednesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,24,62,38.71,18,61,29.51,Seafood
+BKK CDG,2025-04-03,Thursday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",43,108,39.81,29,103,28.16,Seafood
+BKK CDG,2025-04-03,Thursday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,65,108,60.19,74,103,71.84,Chicken
+BKK CDG,2025-04-03,Thursday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,43,108,39.81,28,103,27.18,Seafood
+BKK CDG,2025-04-03,Thursday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",65,108,60.19,75,103,72.82,Chicken
+BKK CDG,2025-04-04,Friday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,72,120,60.0,78,117,66.67,Chicken
+BKK CDG,2025-04-04,Friday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",48,120,40.0,39,117,33.33,Seafood
+BKK CDG,2025-04-04,Friday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,48,120,40.0,39,117,33.33,Seafood
+BKK CDG,2025-04-04,Friday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",72,120,60.0,78,117,66.67,Chicken
+BKK CDG,2025-04-05,Saturday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",52,130,40.0,46,141,32.62,Seafood
+BKK CDG,2025-04-05,Saturday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,78,130,60.0,95,141,67.38,Chicken
+BKK CDG,2025-04-05,Saturday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",78,130,60.0,96,141,68.09,Chicken
+BKK CDG,2025-04-05,Saturday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,52,130,40.0,45,141,31.91,Seafood
+BKK CDG,2025-04-06,Sunday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",55,139,39.57,48,140,34.29,Seafood
+BKK CDG,2025-04-06,Sunday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,84,139,60.43,92,140,65.71,Chicken
+BKK CDG,2025-04-06,Sunday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,55,139,39.57,45,140,32.14,Seafood
+BKK CDG,2025-04-06,Sunday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",84,139,60.43,95,140,67.86,Chicken
+BKK CDG,2025-04-07,Monday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,32,52,61.54,34,52,65.38,Chicken
+BKK CDG,2025-04-07,Monday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",20,52,38.46,18,52,34.62,Seafood
+BKK CDG,2025-04-07,Monday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,20,52,38.46,18,52,34.62,Seafood
+BKK CDG,2025-04-07,Monday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",32,52,61.54,34,52,65.38,Chicken
+BKK CDG,2025-04-08,Tuesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,49,81,60.49,58,83,69.88,Chicken
+BKK CDG,2025-04-08,Tuesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",32,81,39.51,25,83,30.12,Seafood
+BKK CDG,2025-04-08,Tuesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",49,81,60.49,58,83,69.88,Chicken
+BKK CDG,2025-04-08,Tuesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,32,81,39.51,25,83,30.12,Seafood
+BKK CDG,2025-04-09,Wednesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,52,86,60.47,60,86,69.77,Chicken
+BKK CDG,2025-04-09,Wednesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",34,86,39.53,26,86,30.23,Seafood
+BKK CDG,2025-04-09,Wednesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,34,86,39.53,25,86,29.07,Seafood
+BKK CDG,2025-04-09,Wednesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",52,86,60.47,61,86,70.93,Chicken
+BKK CDG,2025-04-10,Thursday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",48,120,40.0,39,118,33.05,Seafood
+BKK CDG,2025-04-10,Thursday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,72,120,60.0,79,118,66.95,Chicken
+BKK CDG,2025-04-10,Thursday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",72,120,60.0,80,118,67.8,Chicken
+BKK CDG,2025-04-10,Thursday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,48,120,40.0,38,118,32.2,Seafood
+BKK CDG,2025-04-11,Friday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,66,110,60.0,70,109,64.22,Chicken
+BKK CDG,2025-04-11,Friday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",44,110,40.0,39,109,35.78,Seafood
+BKK CDG,2025-04-11,Friday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",66,110,60.0,71,109,65.14,Chicken
+BKK CDG,2025-04-11,Friday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,44,110,40.0,38,109,34.86,Seafood
+BKK CDG,2025-04-12,Saturday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,82,136,60.29,91,136,66.91,Chicken
+BKK CDG,2025-04-12,Saturday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",54,136,39.71,45,136,33.09,Seafood
+BKK CDG,2025-04-12,Saturday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,54,136,39.71,44,136,32.35,Seafood
+BKK CDG,2025-04-12,Saturday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",82,136,60.29,92,136,67.65,Chicken
+BKK CDG,2025-04-13,Sunday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",59,148,39.86,49,146,33.56,Seafood
+BKK CDG,2025-04-13,Sunday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,89,148,60.14,97,146,66.44,Chicken
+BKK CDG,2025-04-13,Sunday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",89,148,60.14,97,146,66.44,Chicken
+BKK CDG,2025-04-13,Sunday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,59,148,39.86,49,146,33.56,Seafood
+BKK CDG,2025-04-14,Monday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,51,84,60.71,57,82,69.51,Chicken
+BKK CDG,2025-04-14,Monday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",33,84,39.29,25,82,30.49,Seafood
+BKK CDG,2025-04-14,Monday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",51,84,60.71,59,82,71.95,Chicken
+BKK CDG,2025-04-14,Monday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,33,84,39.29,23,82,28.05,Seafood
+BKK CDG,2025-04-15,Tuesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,49,81,60.49,50,78,64.1,Chicken
+BKK CDG,2025-04-15,Tuesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",32,81,39.51,28,78,35.9,Seafood
+BKK CDG,2025-04-15,Tuesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",49,81,60.49,52,78,66.67,Chicken
+BKK CDG,2025-04-15,Tuesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,32,81,39.51,26,78,33.33,Seafood
+BKK CDG,2025-04-16,Wednesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,83,137,60.58,92,135,68.15,Chicken
+BKK CDG,2025-04-16,Wednesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",54,137,39.42,43,135,31.85,Seafood
+BKK CDG,2025-04-16,Wednesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,54,137,39.42,41,135,30.37,Seafood
+BKK CDG,2025-04-16,Wednesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",83,137,60.58,94,135,69.63,Chicken
+BKK CDG,2025-04-17,Thursday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,100,166,60.24,107,159,67.3,Chicken
+BKK CDG,2025-04-17,Thursday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",66,166,39.76,52,159,32.7,Seafood
+BKK CDG,2025-04-17,Thursday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,66,166,39.76,52,159,32.7,Seafood
+BKK CDG,2025-04-17,Thursday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",100,166,60.24,107,159,67.3,Chicken
+BKK CDG,2025-04-18,Friday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,102,169,60.36,111,169,65.68,Chicken
+BKK CDG,2025-04-18,Friday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",67,169,39.64,58,169,34.32,Seafood
+BKK CDG,2025-04-18,Friday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",102,169,60.36,114,169,67.46,Chicken
+BKK CDG,2025-04-18,Friday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,67,169,39.64,55,169,32.54,Seafood
+BKK CDG,2025-04-19,Saturday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",66,167,39.52,58,169,34.32,Seafood
+BKK CDG,2025-04-19,Saturday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,101,167,60.48,111,169,65.68,Chicken
+BKK CDG,2025-04-19,Saturday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,66,167,39.52,55,169,32.54,Seafood
+BKK CDG,2025-04-19,Saturday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",101,167,60.48,114,169,67.46,Chicken
+BKK CDG,2025-04-20,Sunday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,94,156,60.26,103,156,66.03,Chicken
+BKK CDG,2025-04-20,Sunday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",62,156,39.74,53,156,33.97,Seafood
+BKK CDG,2025-04-20,Sunday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,62,156,39.74,53,156,33.97,Seafood
+BKK CDG,2025-04-20,Sunday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",94,156,60.26,103,156,66.03,Chicken
+BKK CDG,2025-04-21,Monday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",66,166,39.76,56,167,33.53,Seafood
+BKK CDG,2025-04-21,Monday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,100,166,60.24,111,167,66.47,Chicken
+BKK CDG,2025-04-21,Monday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,66,166,39.76,54,167,32.34,Seafood
+BKK CDG,2025-04-21,Monday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",100,166,60.24,113,167,67.66,Chicken
+BKK CDG,2025-04-22,Tuesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,100,166,60.24,111,171,64.91,Chicken
+BKK CDG,2025-04-22,Tuesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",66,166,39.76,60,171,35.09,Seafood
+BKK CDG,2025-04-22,Tuesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,66,166,39.76,57,171,33.33,Seafood
+BKK CDG,2025-04-22,Tuesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",100,166,60.24,114,171,66.67,Chicken
+BKK CDG,2025-04-23,Wednesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,109,181,60.22,117,175,66.86,Chicken
+BKK CDG,2025-04-23,Wednesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",72,181,39.78,58,175,33.14,Seafood
+BKK CDG,2025-04-23,Wednesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,72,181,39.78,57,175,32.57,Seafood
+BKK CDG,2025-04-23,Wednesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",109,181,60.22,118,175,67.43,Chicken
+BKK CDG,2025-04-24,Thursday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",65,164,39.63,55,161,34.16,Seafood
+BKK CDG,2025-04-24,Thursday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,99,164,60.37,106,161,65.84,Chicken
+BKK CDG,2025-04-24,Thursday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",99,164,60.37,108,161,67.08,Chicken
+BKK CDG,2025-04-24,Thursday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,65,164,39.63,53,161,32.92,Seafood
+BKK CDG,2025-04-25,Friday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,103,171,60.23,116,176,65.91,Chicken
+BKK CDG,2025-04-25,Friday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",68,171,39.77,60,176,34.09,Seafood
+BKK CDG,2025-04-25,Friday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,68,171,39.77,59,176,33.52,Seafood
+BKK CDG,2025-04-25,Friday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",103,171,60.23,117,176,66.48,Chicken
+BKK CDG,2025-04-26,Saturday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",68,170,40.0,55,172,31.98,Seafood
+BKK CDG,2025-04-26,Saturday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,102,170,60.0,117,172,68.02,Chicken
+BKK CDG,2025-04-26,Saturday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",102,170,60.0,118,172,68.6,Chicken
+BKK CDG,2025-04-26,Saturday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,68,170,40.0,54,172,31.4,Seafood
+BKK CDG,2025-04-27,Sunday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,108,180,60.0,117,181,64.64,Chicken
+BKK CDG,2025-04-27,Sunday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",72,180,40.0,64,181,35.36,Seafood
+BKK CDG,2025-04-27,Sunday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,72,180,40.0,61,181,33.7,Seafood
+BKK CDG,2025-04-27,Sunday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",108,180,60.0,120,181,66.3,Chicken
+BKK CDG,2025-04-28,Monday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",67,168,39.88,58,164,35.37,Seafood
+BKK CDG,2025-04-28,Monday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,101,168,60.12,106,164,64.63,Chicken
+BKK CDG,2025-04-28,Monday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",101,168,60.12,106,164,64.63,Chicken
+BKK CDG,2025-04-28,Monday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,67,168,39.88,58,164,35.37,Seafood
+BKK CDG,2025-04-29,Tuesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,99,164,60.37,108,161,67.08,Chicken
+BKK CDG,2025-04-29,Tuesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",65,164,39.63,53,161,32.92,Seafood
+BKK CDG,2025-04-29,Tuesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,65,164,39.63,52,161,32.3,Seafood
+BKK CDG,2025-04-29,Tuesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",99,164,60.37,109,161,67.7,Chicken
+BKK CDG,2025-04-30,Wednesday,Y,Dinner,"5C19 BKK FFM Fish in Hot Bean Sauce, Braised Noodles, oriental Veg",69,174,39.66,57,176,32.39,Seafood
+BKK CDG,2025-04-30,Wednesday,Y,Dinner,5C22 BKK FFM Grilled Chicken Breast with Thyme Jus,105,174,60.34,119,176,67.61,Chicken
+BKK CDG,2025-04-30,Wednesday,Y,Lunch,5C19 BKK FFM Baked Fish with Herbed Sauce,69,174,39.66,56,176,31.82,Seafood
+BKK CDG,2025-04-30,Wednesday,Y,Lunch,"5C19 BKK FFM Ginger Spring Onion Chicken, Braised Ee Fu Noodles, chye Sim, Carrot",105,174,60.34,120,176,68.18,Chicken
+BKK CDG,2025-05-01,Thursday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",101,167,60.48,113,167,67.66,Chicken
+BKK CDG,2025-05-01,Thursday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",66,167,39.52,54,167,32.34,Seafood
+BKK CDG,2025-05-01,Thursday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,101,167,60.48,113,167,67.66,Chicken
+BKK CDG,2025-05-01,Thursday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",66,167,39.52,54,167,32.34,Seafood
+BKK CDG,2025-05-02,Friday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",66,167,39.52,55,154,35.71,Seafood
+BKK CDG,2025-05-02,Friday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",101,167,60.48,99,154,64.29,Chicken
+BKK CDG,2025-05-02,Friday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,101,167,60.48,101,154,65.58,Chicken
+BKK CDG,2025-05-02,Friday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",66,167,39.52,53,154,34.42,Seafood
+BKK CDG,2025-05-03,Saturday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",66,166,39.76,55,170,32.35,Seafood
+BKK CDG,2025-05-03,Saturday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",100,166,60.24,115,170,67.65,Chicken
+BKK CDG,2025-05-03,Saturday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,100,166,60.24,119,170,70.0,Chicken
+BKK CDG,2025-05-03,Saturday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",66,166,39.76,51,170,30.0,Seafood
+BKK CDG,2025-05-04,Sunday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",68,171,39.77,58,176,32.95,Seafood
+BKK CDG,2025-05-04,Sunday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",103,171,60.23,118,176,67.05,Chicken
+BKK CDG,2025-05-04,Sunday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,103,171,60.23,122,176,69.32,Chicken
+BKK CDG,2025-05-04,Sunday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",68,171,39.77,54,176,30.68,Seafood
+BKK CDG,2025-05-05,Monday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",66,166,39.76,55,166,33.13,Seafood
+BKK CDG,2025-05-05,Monday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",100,166,60.24,111,166,66.87,Chicken
+BKK CDG,2025-05-05,Monday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",66,166,39.76,52,166,31.33,Seafood
+BKK CDG,2025-05-05,Monday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,100,166,60.24,114,166,68.67,Chicken
+BKK CDG,2025-05-06,Tuesday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",90,150,60.0,99,147,67.35,Chicken
+BKK CDG,2025-05-06,Tuesday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",60,150,40.0,48,147,32.65,Seafood
+BKK CDG,2025-05-06,Tuesday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,90,150,60.0,99,147,67.35,Chicken
+BKK CDG,2025-05-06,Tuesday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",60,150,40.0,48,147,32.65,Seafood
+BKK CDG,2025-05-07,Wednesday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",89,147,60.54,92,143,64.34,Chicken
+BKK CDG,2025-05-07,Wednesday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",58,147,39.46,51,143,35.66,Seafood
+BKK CDG,2025-05-07,Wednesday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,89,147,60.54,95,143,66.43,Chicken
+BKK CDG,2025-05-07,Wednesday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",58,147,39.46,48,143,33.57,Seafood
+BKK CDG,2025-05-08,Thursday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",104,173,60.12,111,169,65.68,Chicken
+BKK CDG,2025-05-08,Thursday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",69,173,39.88,58,169,34.32,Seafood
+BKK CDG,2025-05-08,Thursday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",69,173,39.88,55,169,32.54,Seafood
+BKK CDG,2025-05-08,Thursday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,104,173,60.12,114,169,67.46,Chicken
+BKK CDG,2025-05-09,Friday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",68,170,40.0,60,165,36.36,Seafood
+BKK CDG,2025-05-09,Friday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",102,170,60.0,105,165,63.64,Chicken
+BKK CDG,2025-05-09,Friday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,102,170,60.0,108,165,65.45,Chicken
+BKK CDG,2025-05-09,Friday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",68,170,40.0,57,165,34.55,Seafood
+BKK CDG,2025-05-10,Saturday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",68,172,39.53,58,169,34.32,Seafood
+BKK CDG,2025-05-10,Saturday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",104,172,60.47,111,169,65.68,Chicken
+BKK CDG,2025-05-10,Saturday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",68,172,39.53,57,169,33.73,Seafood
+BKK CDG,2025-05-10,Saturday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,104,172,60.47,112,169,66.27,Chicken
+BKK CDG,2025-05-11,Sunday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",105,174,60.34,111,172,64.53,Chicken
+BKK CDG,2025-05-11,Sunday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",69,174,39.66,61,172,35.47,Seafood
+BKK CDG,2025-05-11,Sunday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,105,174,60.34,115,172,66.86,Chicken
+BKK CDG,2025-05-11,Sunday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",69,174,39.66,57,172,33.14,Seafood
+BKK CDG,2025-05-12,Monday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",65,163,39.88,55,159,34.59,Seafood
+BKK CDG,2025-05-12,Monday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",98,163,60.12,104,159,65.41,Chicken
+BKK CDG,2025-05-12,Monday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",65,163,39.88,52,159,32.7,Seafood
+BKK CDG,2025-05-12,Monday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,98,163,60.12,107,159,67.3,Chicken
+BKK CDG,2025-05-13,Tuesday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",63,104,60.58,65,101,64.36,Chicken
+BKK CDG,2025-05-13,Tuesday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",41,104,39.42,36,101,35.64,Seafood
+BKK CDG,2025-05-13,Tuesday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,63,104,60.58,66,101,65.35,Chicken
+BKK CDG,2025-05-13,Tuesday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",41,104,39.42,35,101,34.65,Seafood
+BKK CDG,2025-05-14,Wednesday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",56,92,60.87,62,90,68.89,Chicken
+BKK CDG,2025-05-14,Wednesday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",36,92,39.13,28,90,31.11,Seafood
+BKK CDG,2025-05-14,Wednesday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,56,92,60.87,63,90,70.0,Chicken
+BKK CDG,2025-05-14,Wednesday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",36,92,39.13,27,90,30.0,Seafood
+BKK CDG,2025-05-15,Thursday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",46,117,39.32,37,113,32.74,Seafood
+BKK CDG,2025-05-15,Thursday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",71,117,60.68,76,113,67.26,Chicken
+BKK CDG,2025-05-15,Thursday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,71,117,60.68,77,113,68.14,Chicken
+BKK CDG,2025-05-15,Thursday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",46,117,39.32,36,113,31.86,Seafood
+BKK CDG,2025-05-16,Friday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",88,146,60.27,89,138,64.49,Chicken
+BKK CDG,2025-05-16,Friday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",58,146,39.73,49,138,35.51,Seafood
+BKK CDG,2025-05-16,Friday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",58,146,39.73,48,138,34.78,Seafood
+BKK CDG,2025-05-16,Friday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,88,146,60.27,90,138,65.22,Chicken
+BKK CDG,2025-05-17,Saturday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",95,157,60.51,105,155,67.74,Chicken
+BKK CDG,2025-05-17,Saturday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",62,157,39.49,50,155,32.26,Seafood
+BKK CDG,2025-05-17,Saturday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,95,157,60.51,105,155,67.74,Chicken
+BKK CDG,2025-05-17,Saturday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",62,157,39.49,50,155,32.26,Seafood
+BKK CDG,2025-05-18,Sunday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",79,131,60.31,87,128,67.97,Chicken
+BKK CDG,2025-05-18,Sunday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",52,131,39.69,41,128,32.03,Seafood
+BKK CDG,2025-05-18,Sunday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,79,131,60.31,88,128,68.75,Chicken
+BKK CDG,2025-05-18,Sunday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",52,131,39.69,40,128,31.25,Seafood
+BKK CDG,2025-05-19,Monday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",55,91,60.44,57,87,65.52,Chicken
+BKK CDG,2025-05-19,Monday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",36,91,39.56,30,87,34.48,Seafood
+BKK CDG,2025-05-19,Monday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,55,91,60.44,57,87,65.52,Chicken
+BKK CDG,2025-05-19,Monday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",36,91,39.56,30,87,34.48,Seafood
+BKK CDG,2025-05-20,Tuesday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",45,75,60.0,53,74,71.62,Chicken
+BKK CDG,2025-05-20,Tuesday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",30,75,40.0,21,74,28.38,Seafood
+BKK CDG,2025-05-20,Tuesday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",30,75,40.0,20,74,27.03,Seafood
+BKK CDG,2025-05-20,Tuesday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,45,75,60.0,54,74,72.97,Chicken
+BKK CDG,2025-05-21,Wednesday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",40,100,40.0,33,99,33.33,Seafood
+BKK CDG,2025-05-21,Wednesday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",60,100,60.0,66,99,66.67,Chicken
+BKK CDG,2025-05-21,Wednesday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",40,100,40.0,31,99,31.31,Seafood
+BKK CDG,2025-05-21,Wednesday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,60,100,60.0,68,99,68.69,Chicken
+BKK CDG,2025-05-22,Thursday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",38,97,39.18,28,94,29.79,Seafood
+BKK CDG,2025-05-22,Thursday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",59,97,60.82,66,94,70.21,Chicken
+BKK CDG,2025-05-22,Thursday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,59,97,60.82,67,94,71.28,Chicken
+BKK CDG,2025-05-22,Thursday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",38,97,39.18,27,94,28.72,Seafood
+BKK CDG,2025-05-23,Friday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",57,144,39.58,51,143,35.66,Seafood
+BKK CDG,2025-05-23,Friday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",87,144,60.42,92,143,64.34,Chicken
+BKK CDG,2025-05-23,Friday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,87,144,60.42,92,143,64.34,Chicken
+BKK CDG,2025-05-23,Friday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",57,144,39.58,51,143,35.66,Seafood
+BKK CDG,2025-05-24,Saturday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",53,133,39.85,43,129,33.33,Seafood
+BKK CDG,2025-05-24,Saturday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",80,133,60.15,86,129,66.67,Chicken
+BKK CDG,2025-05-24,Saturday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,80,133,60.15,87,129,67.44,Chicken
+BKK CDG,2025-05-24,Saturday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",53,133,39.85,42,129,32.56,Seafood
+BKK CDG,2025-05-25,Sunday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",50,127,39.37,41,122,33.61,Seafood
+BKK CDG,2025-05-25,Sunday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",77,127,60.63,81,122,66.39,Chicken
+BKK CDG,2025-05-25,Sunday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",50,127,39.37,41,122,33.61,Seafood
+BKK CDG,2025-05-25,Sunday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,77,127,60.63,81,122,66.39,Chicken
+BKK CDG,2025-05-26,Monday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",46,115,40.0,38,114,33.33,Seafood
+BKK CDG,2025-05-26,Monday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",69,115,60.0,76,114,66.67,Chicken
+BKK CDG,2025-05-26,Monday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",46,115,40.0,38,114,33.33,Seafood
+BKK CDG,2025-05-26,Monday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,69,115,60.0,76,114,66.67,Chicken
+BKK CDG,2025-05-27,Tuesday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",52,130,40.0,42,127,33.07,Seafood
+BKK CDG,2025-05-27,Tuesday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",78,130,60.0,85,127,66.93,Chicken
+BKK CDG,2025-05-27,Tuesday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",52,130,40.0,42,127,33.07,Seafood
+BKK CDG,2025-05-27,Tuesday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,78,130,60.0,85,127,66.93,Chicken
+BKK CDG,2025-05-28,Wednesday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",79,131,60.31,84,126,66.67,Chicken
+BKK CDG,2025-05-28,Wednesday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",52,131,39.69,42,126,33.33,Seafood
+BKK CDG,2025-05-28,Wednesday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,79,131,60.31,85,126,67.46,Chicken
+BKK CDG,2025-05-28,Wednesday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",52,131,39.69,41,126,32.54,Seafood
+BKK CDG,2025-05-29,Thursday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",59,149,39.6,47,141,33.33,Seafood
+BKK CDG,2025-05-29,Thursday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",90,149,60.4,94,141,66.67,Chicken
+BKK CDG,2025-05-29,Thursday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,90,149,60.4,96,141,68.09,Chicken
+BKK CDG,2025-05-29,Thursday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",59,149,39.6,45,141,31.91,Seafood
+BKK CDG,2025-05-30,Friday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",63,158,39.87,56,157,35.67,Seafood
+BKK CDG,2025-05-30,Friday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",95,158,60.13,101,157,64.33,Chicken
+BKK CDG,2025-05-30,Friday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,95,158,60.13,104,157,66.24,Chicken
+BKK CDG,2025-05-30,Friday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",63,158,39.87,53,157,33.76,Seafood
+BKK CDG,2025-05-31,Saturday,Y,Dinner,"5C22 BKK FFM Chicken Ragout w Mush cream sc, pumpkin & carrot",103,171,60.23,110,167,65.87,Chicken
+BKK CDG,2025-05-31,Saturday,Y,Dinner,"5C19 BKK LRG Deep Fried Fish with garlic ginger sc, mix cargo rice, oriental veg",68,171,39.77,57,167,34.13,Seafood
+BKK CDG,2025-05-31,Saturday,Y,Lunch,5C24 BKK FFM Soy Garlic Chicken Noodles,103,171,60.23,112,167,67.07,Chicken
+BKK CDG,2025-05-31,Saturday,Y,Lunch,"5C24 BKK LRG Baked Fish, Mush Crm Sc, Herb Potato Mash, Ratatouille, Broccoli",68,171,39.77,55,167,32.93,Seafood
+BKK CDG,2025-06-01,Sunday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,96,160,60.0,103,159,64.78,Chicken
+BKK CDG,2025-06-01,Sunday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,64,160,40.0,56,159,35.22,Seafood
+BKK CDG,2025-06-01,Sunday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",96,160,60.0,107,159,67.3,Chicken
+BKK CDG,2025-06-01,Sunday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",64,160,40.0,52,159,32.7,Seafood
+BKK CDG,2025-06-02,Monday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,63,159,39.62,56,151,37.09,Seafood
+BKK CDG,2025-06-02,Monday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,96,159,60.38,95,151,62.91,Chicken
+BKK CDG,2025-06-02,Monday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",96,159,60.38,98,151,64.9,Chicken
+BKK CDG,2025-06-02,Monday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",63,159,39.62,53,151,35.1,Seafood
+BKK CDG,2025-06-03,Tuesday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,54,137,39.42,48,137,35.04,Seafood
+BKK CDG,2025-06-03,Tuesday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,83,137,60.58,89,137,64.96,Chicken
+BKK CDG,2025-06-03,Tuesday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",54,137,39.42,48,137,35.04,Seafood
+BKK CDG,2025-06-03,Tuesday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",83,137,60.58,89,137,64.96,Chicken
+BKK CDG,2025-06-04,Wednesday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,83,137,60.58,91,132,68.94,Chicken
+BKK CDG,2025-06-04,Wednesday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,54,137,39.42,41,132,31.06,Seafood
+BKK CDG,2025-06-04,Wednesday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",54,137,39.42,41,132,31.06,Seafood
+BKK CDG,2025-06-04,Wednesday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",83,137,60.58,91,132,68.94,Chicken
+BKK CDG,2025-06-05,Thursday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,95,158,60.13,105,156,67.31,Chicken
+BKK CDG,2025-06-05,Thursday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,63,158,39.87,51,156,32.69,Seafood
+BKK CDG,2025-06-05,Thursday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",95,158,60.13,106,156,67.95,Chicken
+BKK CDG,2025-06-05,Thursday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",63,158,39.87,50,156,32.05,Seafood
+BKK CDG,2025-06-06,Friday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,91,151,60.26,95,147,64.63,Chicken
+BKK CDG,2025-06-06,Friday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,60,151,39.74,52,147,35.37,Seafood
+BKK CDG,2025-06-06,Friday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",60,151,39.74,50,147,34.01,Seafood
+BKK CDG,2025-06-06,Friday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",91,151,60.26,97,147,65.99,Chicken
+BKK CDG,2025-06-07,Saturday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,60,151,39.74,49,147,33.33,Seafood
+BKK CDG,2025-06-07,Saturday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,91,151,60.26,98,147,66.67,Chicken
+BKK CDG,2025-06-07,Saturday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",60,151,39.74,48,147,32.65,Seafood
+BKK CDG,2025-06-07,Saturday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",91,151,60.26,99,147,67.35,Chicken
+BKK CDG,2025-06-08,Sunday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,81,134,60.45,85,131,64.89,Chicken
+BKK CDG,2025-06-08,Sunday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,53,134,39.55,46,131,35.11,Seafood
+BKK CDG,2025-06-08,Sunday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",53,134,39.55,45,131,34.35,Seafood
+BKK CDG,2025-06-08,Sunday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",81,134,60.45,86,131,65.65,Chicken
+BKK CDG,2025-06-09,Monday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,41,104,39.42,32,101,31.68,Seafood
+BKK CDG,2025-06-09,Monday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,63,104,60.58,69,101,68.32,Chicken
+BKK CDG,2025-06-09,Monday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",63,104,60.58,72,101,71.29,Chicken
+BKK CDG,2025-06-09,Monday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",41,104,39.42,29,101,28.71,Seafood
+BKK CDG,2025-06-10,Tuesday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,31,78,39.74,23,74,31.08,Seafood
+BKK CDG,2025-06-10,Tuesday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,47,78,60.26,51,74,68.92,Chicken
+BKK CDG,2025-06-10,Tuesday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",31,78,39.74,23,74,31.08,Seafood
+BKK CDG,2025-06-10,Tuesday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",47,78,60.26,51,74,68.92,Chicken
+BKK CDG,2025-06-11,Wednesday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,71,117,60.68,74,114,64.91,Chicken
+BKK CDG,2025-06-11,Wednesday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,46,117,39.32,40,114,35.09,Seafood
+BKK CDG,2025-06-11,Wednesday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",71,117,60.68,77,114,67.54,Chicken
+BKK CDG,2025-06-11,Wednesday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",46,117,39.32,37,114,32.46,Seafood
+BKK CDG,2025-06-12,Thursday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,80,133,60.15,85,125,68.0,Chicken
+BKK CDG,2025-06-12,Thursday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,53,133,39.85,40,125,32.0,Seafood
+BKK CDG,2025-06-12,Thursday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",80,133,60.15,85,125,68.0,Chicken
+BKK CDG,2025-06-12,Thursday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",53,133,39.85,40,125,32.0,Seafood
+BKK CDG,2025-06-13,Friday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,86,142,60.56,91,144,63.19,Chicken
+BKK CDG,2025-06-13,Friday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,56,142,39.44,53,144,36.81,Seafood
+BKK CDG,2025-06-13,Friday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",56,142,39.44,52,144,36.11,Seafood
+BKK CDG,2025-06-13,Friday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",86,142,60.56,92,144,63.89,Chicken
+BKK CDG,2025-06-14,Saturday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,98,162,60.49,107,162,66.05,Chicken
+BKK CDG,2025-06-14,Saturday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,64,162,39.51,55,162,33.95,Seafood
+BKK CDG,2025-06-14,Saturday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",98,162,60.49,108,162,66.67,Chicken
+BKK CDG,2025-06-14,Saturday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",64,162,39.51,54,162,33.33,Seafood
+BKK CDG,2025-06-15,Sunday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,89,148,60.14,98,145,67.59,Chicken
+BKK CDG,2025-06-15,Sunday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,59,148,39.86,47,145,32.41,Seafood
+BKK CDG,2025-06-15,Sunday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",58,147,39.46,45,145,31.03,Seafood
+BKK CDG,2025-06-15,Sunday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",89,147,60.54,100,145,68.97,Chicken
+BKK CDG,2025-06-16,Monday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,68,113,60.18,74,110,67.27,Chicken
+BKK CDG,2025-06-16,Monday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,45,113,39.82,36,110,32.73,Seafood
+BKK CDG,2025-06-16,Monday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",45,113,39.82,35,110,31.82,Seafood
+BKK CDG,2025-06-16,Monday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",68,113,60.18,75,110,68.18,Chicken
+BKK CDG,2025-06-17,Tuesday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,59,98,60.2,65,98,66.33,Chicken
+BKK CDG,2025-06-17,Tuesday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,39,98,39.8,33,98,33.67,Seafood
+BKK CDG,2025-06-17,Tuesday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",39,98,39.8,32,98,32.65,Seafood
+BKK CDG,2025-06-17,Tuesday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",59,98,60.2,66,98,67.35,Chicken
+BKK CDG,2025-06-18,Wednesday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,80,133,60.15,85,129,65.89,Chicken
+BKK CDG,2025-06-18,Wednesday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,53,133,39.85,44,129,34.11,Seafood
+BKK CDG,2025-06-18,Wednesday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",53,133,39.85,43,129,33.33,Seafood
+BKK CDG,2025-06-18,Wednesday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",80,133,60.15,86,129,66.67,Chicken
+BKK CDG,2025-06-19,Thursday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,67,168,39.88,54,160,33.75,Seafood
+BKK CDG,2025-06-19,Thursday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,101,168,60.12,106,160,66.25,Chicken
+BKK CDG,2025-06-19,Thursday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",67,168,39.88,53,160,33.12,Seafood
+BKK CDG,2025-06-19,Thursday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",101,168,60.12,107,160,66.88,Chicken
+BKK CDG,2025-06-20,Friday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,82,136,60.29,87,132,65.91,Chicken
+BKK CDG,2025-06-20,Friday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,54,136,39.71,45,132,34.09,Seafood
+BKK CDG,2025-06-20,Friday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",54,136,39.71,45,132,34.09,Seafood
+BKK CDG,2025-06-20,Friday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",82,136,60.29,87,132,65.91,Chicken
+BKK CDG,2025-06-21,Saturday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,61,153,39.87,47,145,32.41,Seafood
+BKK CDG,2025-06-21,Saturday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,92,153,60.13,98,145,67.59,Chicken
+BKK CDG,2025-06-21,Saturday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",61,153,39.87,45,145,31.03,Seafood
+BKK CDG,2025-06-21,Saturday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",92,153,60.13,100,145,68.97,Chicken
+BKK CDG,2025-06-22,Sunday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,95,158,60.13,105,154,68.18,Chicken
+BKK CDG,2025-06-22,Sunday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,63,158,39.87,49,154,31.82,Seafood
+BKK CDG,2025-06-22,Sunday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",95,158,60.13,106,154,68.83,Chicken
+BKK CDG,2025-06-22,Sunday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",63,158,39.87,48,154,31.17,Seafood
+BKK CDG,2025-06-23,Monday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,86,142,60.56,94,140,67.14,Chicken
+BKK CDG,2025-06-23,Monday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,56,142,39.44,46,140,32.86,Seafood
+BKK CDG,2025-06-23,Monday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",86,142,60.56,94,140,67.14,Chicken
+BKK CDG,2025-06-23,Monday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",56,142,39.44,46,140,32.86,Seafood
+BKK CDG,2025-06-24,Tuesday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,60,150,40.0,48,148,32.43,Seafood
+BKK CDG,2025-06-24,Tuesday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,90,150,60.0,100,148,67.57,Chicken
+BKK CDG,2025-06-24,Tuesday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",90,150,60.0,102,148,68.92,Chicken
+BKK CDG,2025-06-24,Tuesday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",60,150,40.0,46,148,31.08,Seafood
+BKK CDG,2025-06-25,Wednesday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,63,158,39.87,54,160,33.75,Seafood
+BKK CDG,2025-06-25,Wednesday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,95,158,60.13,106,160,66.25,Chicken
+BKK CDG,2025-06-25,Wednesday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",95,158,60.13,106,160,66.25,Chicken
+BKK CDG,2025-06-25,Wednesday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",63,158,39.87,54,160,33.75,Seafood
+BKK CDG,2025-06-26,Thursday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,100,166,60.24,110,164,67.07,Chicken
+BKK CDG,2025-06-26,Thursday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,66,166,39.76,54,164,32.93,Seafood
+BKK CDG,2025-06-26,Thursday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",100,166,60.24,112,164,68.29,Chicken
+BKK CDG,2025-06-26,Thursday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",66,166,39.76,52,164,31.71,Seafood
+BKK CDG,2025-06-27,Friday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,96,160,60.0,103,156,66.03,Chicken
+BKK CDG,2025-06-27,Friday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,64,160,40.0,53,156,33.97,Seafood
+BKK CDG,2025-06-27,Friday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",64,160,40.0,53,156,33.97,Seafood
+BKK CDG,2025-06-27,Friday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",96,160,60.0,103,156,66.03,Chicken
+BKK CDG,2025-06-28,Saturday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,96,159,60.38,99,151,65.56,Chicken
+BKK CDG,2025-06-28,Saturday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,63,159,39.62,52,151,34.44,Seafood
+BKK CDG,2025-06-28,Saturday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",63,159,39.62,49,151,32.45,Seafood
+BKK CDG,2025-06-28,Saturday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",96,159,60.38,102,151,67.55,Chicken
+BKK CDG,2025-06-29,Sunday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,65,164,39.63,50,162,30.86,Seafood
+BKK CDG,2025-06-29,Sunday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,99,164,60.37,112,162,69.14,Chicken
+BKK CDG,2025-06-29,Sunday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",99,164,60.37,114,162,70.37,Chicken
+BKK CDG,2025-06-29,Sunday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",65,164,39.63,48,162,29.63,Seafood
+BKK CDG,2025-06-30,Monday,Y,Dinner,5C22 BKK FFM Poached Fish with Pasta in Dill Cream Sauce,47,119,39.5,38,119,31.93,Seafood
+BKK CDG,2025-06-30,Monday,Y,Dinner,5C24 BKK FFM Gong Bao Chicken with Steamed Rice,72,119,60.5,81,119,68.07,Chicken
+BKK CDG,2025-06-30,Monday,Y,Lunch,"5C19 BKK FFM Sweet & Sour Basa Fish, Egg Fried Rice with Mixed Vegetables",47,119,39.5,38,119,31.93,Seafood
+BKK CDG,2025-06-30,Monday,Y,Lunch,"5C19 BKK FFM Chicken Meatball Marinara, Fusili",72,119,60.5,81,119,68.07,Chicken
