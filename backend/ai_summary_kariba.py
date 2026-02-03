@@ -4,12 +4,9 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import Dict, List
 import os
-import sys
 import requests
 import logging
 import urllib3
-
-from llm_con import CallLLM
 
 # Disable SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -53,12 +50,16 @@ class PredictionSummaryRequest(BaseModel):
 
 
 # Configuration
-BEDROCK_BASE_URL = os.getenv("BEDROCK_BASE_URL")
-DEFAULT_MODEL = os.getenv("BEDROCK_MODEL", "apac.anthropic.claude-sonnet-4-20250514-v1:0")
-USER_TOKEN = os.getenv("LLM_USER_TOKEN")
+KARIBA_API_URL = os.getenv("KARIBA_API_URL", "https://api.nonprod.kariba.de.sin.auto2.nonprod.c0.sq.com.sg/api/v2/call-llm/")
+# KARIBA_API_URL = os.getenv("KARIBA_API_URL", "https://localhost:9005/api/v2/call-llm/")
+DEFAULT_MODEL = "GPT5-mini"
+## change to correct token here #"ccb28b2533d94af63b88052309b2c2f560ec61a6e2cdad08f7cae0587a5831c5"
+USER_TOKEN = os.getenv("LLM_USER_TOKEN",'ccb28b2533d94af63b88052309b2c2f560ec61a6e2cdad08f7cae0587a5831c5') # testing purposes
 
-def call_bedrock_llm(passenger_groups, weights, prediction_results, original_counts, top_nationalities=None):
-    """Call AWS Bedrock LLM API to analyze meal prediction trends."""
+
+
+def call_kariba_llm(passenger_groups, weights, prediction_results, original_counts, top_nationalities=None):
+    """Call Kariba LLM API to analyze meal prediction trends."""
     
     # Build feature weights text
     weights_text = "\n".join([f"- {k.replace('_', ' ').title()}: {v}%" for k, v in weights.items()])
@@ -183,29 +184,40 @@ BAD EXECUTIVE SUMMARY (don't do this):
             {"role": "system", "content": "You are a strategic advisor for airline meal planning. Write clear, simple explanations for ASEAN business users in plain English. Avoid complex corporate jargon. Write exactly 2 paragraphs without bullet points. Focus on practical business insights that anyone can understand."},
             {"role": "user", "content": prompt}
         ],
-        "temperature": 0
+        "temperature": 0,
+        "user": "talk-with-data",
+        "pii_type": ["no_pii"]
+    }
+    
+    headers = {
+        "x-kariba-user-token": USER_TOKEN,
+        "Content-Type": "application/json"
     }
     
     try:
-        logger.info("Calling AWS Bedrock API...")
+        logger.info("Calling Kariba API......Let's see if it works :)))")
         
-        # Initialize CallLLM with Bedrock configuration
-        llm_client = CallLLM(
-            DEFAULT_MODEL=DEFAULT_MODEL,
-            base_url=BEDROCK_BASE_URL,
-            user_token=USER_TOKEN
+        response = requests.post(
+            url=KARIBA_API_URL,
+            headers=headers,
+            json=body,
+            verify=False,
+            timeout=30
         )
         
-        # Call the LLM using the CallLLM class
-        summary = llm_client.call_llm(body=body)
+        logger.info(f"Response status: {response.status_code}")
         
-        # Check if response is an error message
-        if summary.startswith("Error"):
-            logger.error(f"Bedrock API error: {summary}")
-            return "AI summary not available due to API error. Please check your configuration."
-        
-        logger.info("AI summary generated successfully")
-        return summary
+        if response.status_code == 200:
+            data = response.json()
+            if "choices" in data and len(data["choices"]) > 0:
+                summary = data["choices"][0]["message"]["content"]
+                logger.info("AI summary generated successfully")
+                return summary
+        elif response.status_code == 403:
+            logger.error(f"Authentication failed (403): {response.text}")
+            return "AI summary not available - application access issue!"
+        else:
+            logger.error(f"API error {response.status_code}: {response.text}")
             
     except Exception as e:
         logger.error(f"Request failed: {str(e)}")
@@ -219,7 +231,7 @@ async def ai_prediction_summary(request: PredictionSummaryRequest):
     logger.info(f"AI summary request for {request.flight_number} on {request.flight_date}")
     logger.info(f"Top nationalities provided: {len(request.top_nationalities)}")
     
-    summary = call_bedrock_llm(
+    summary = call_kariba_llm(
         request.passenger_groups,
         request.weights,
         request.prediction_results,

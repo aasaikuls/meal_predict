@@ -7,7 +7,7 @@ import os
 import asyncio
 from datetime import datetime
 from dotenv import load_dotenv
-from ai_summary import router as ai_summary_router, call_kariba_llm, PassengerGroup, TopNationality
+from ai_summary import router as ai_summary_router, call_bedrock_llm, PassengerGroup, TopNationality
 
 # Load environment variables from .env file
 load_dotenv()
@@ -1636,7 +1636,7 @@ async def predict_meals(request: dict):
                 originalCountsForMealTime = sorted_original_counts.get(mealTime, {})
                 
                 # Call AI summary generation
-                summary = call_kariba_llm(
+                summary = call_bedrock_llm(
                     passengerGroups,
                     {
                         "nationality_importance": nat_weight,

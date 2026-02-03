@@ -16,6 +16,9 @@ services:
       - ./PredictionResults:/data/PredictionResults
     environment:
       - PYTHONUNBUFFERED=1
+      - BEDROCK_BASE_URL=${BEDROCK_BASE_URL:-https://bedrock-runtime.ap-southeast-1.amazonaws.com}
+      - BEDROCK_MODEL=${BEDROCK_MODEL:-apac.anthropic.claude-sonnet-4-20250514-v1:0}
+      - LLM_USER_TOKEN=${LLM_USER_TOKEN}
     networks:
       - meal-prediction-network
     restart: unless-stopped

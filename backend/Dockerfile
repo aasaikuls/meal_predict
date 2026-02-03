@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY main.py .
 COPY ai_summary.py .
 COPY meal_planning.py .
+COPY llm_con.py .
 
 # Expose port
 EXPOSE 8001
