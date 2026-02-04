@@ -1257,15 +1257,15 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                   <div>
                     <Label htmlFor={`weekday-select-${mealTime}`}>
                       Flight Weekday
-                      <span className="ml-2 text-xs text-gray-500">(determined by flight date)</span>
                     </Label>
                     <Select
                       id={`weekday-select-${mealTime}`}
                       value={selectedWeekday}
-                      disabled
-                      className="bg-gray-100 cursor-not-allowed opacity-75"
+                      onChange={(e) => setSelectedWeekday(e.target.value)}
                     >
-                      <option value={selectedWeekday}>{selectedWeekday}</option>
+                      {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
+                        <option key={day} value={day}>{day}</option>
+                      ))}
                     </Select>
                   </div>
                 </div>
