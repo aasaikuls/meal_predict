@@ -8,7 +8,7 @@ import { cn } from '../../lib/utils';
 
 const buttonVariants = {
   variant: {
-    primary: 'bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-purple-800 active:scale-95',
+    primary: 'bg-gradient-to-r from-primary to-primary/90 text-white shadow-lg hover:shadow-xl hover:from-[hsl(var(--primary-light,210_100%_40%))] hover:to-primary active:scale-95',
     secondary: 'border-2 border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground',
     ghost: 'text-foreground hover:bg-accent hover:text-accent-foreground',
     outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white',

@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { ToastProvider } from './components/ui';
+import { ThemeProvider } from './themes';
 import FlightSelectionScreen from './screens/FlightSelectionScreen';
 import MasterMetricsScreen from './screens/MasterMetricsScreen';
 import PredictionScreen from './screens/PredictionScreen';
@@ -19,9 +20,10 @@ function App() {
   const [predictionResults, setPredictionResults] = React.useState(null);
 
   return (
+    <ThemeProvider>
     <ToastProvider>
       <Router>
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-gold-50">
+        <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-gold-50">
           {/* Background pattern overlay */}
           <div className="fixed inset-0 opacity-[0.03] pointer-events-none">
             <div className="absolute inset-0" style={{
@@ -72,6 +74,7 @@ function App() {
         </div>
       </Router>
     </ToastProvider>
+    </ThemeProvider>
   );
 }
 

@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { Plane, Calendar, ArrowRight, Globe } from 'lucide-react';
 import axios from 'axios';
 import { Header, Container, PageTransition } from '../components/layout';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button, Label, Select, Input } from '../components/ui';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter, Button, Label, Select } from '../components/ui';
 import { API_BASE_URL } from '../config';
 
 function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, setFlightDate }) {
@@ -18,28 +18,26 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(false);
   const [availableDates, setAvailableDates] = useState([]);
 
   // Clear session memory when returning to flight selection
   useEffect(() => {
-    console.log('🗑️  Clearing session memory (returned to flight selection)');
-    axios.post(`${API_BASE_URL}/api/clear-session`)
-      .then(response => {
-        console.log('✅ Session cleared:', response.data);
-      })
+    axios.post(`${API_BASE_URL}/clear-session`)
+      .then(() => {})
       .catch(err => {
         console.error('Error clearing session:', err);
       });
   }, []);
 
   useEffect(() => {
-    // Fetch flights from API (from customers.csv)
+    // Fetch flights from API
     const fetchFlights = async () => {
+      setFetchError(false);
+      setLoading(true);
       try {
-        const response = await fetch(`${API_BASE_URL}/api/flights`);
+        const response = await fetch(`${API_BASE_URL}/flights`);
         const data = await response.json();
-        
-        console.log('Fetched flight data:', data);
         
         if (data.flights && data.flights.length > 0) {
           setFlights(data.flights);
@@ -65,13 +63,14 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
         }
       } catch (error) {
         console.error('Error fetching flights:', error);
+        setFetchError(true);
       } finally {
         setLoading(false);
       }
     };
 
     fetchFlights();
-  }, []);
+  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleNext = () => {
     if (selectedFlight && flightDate) {
@@ -84,41 +83,51 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
     }
   };
 
-  // Check if a date is available for the selected flight
-  const isDateAvailable = (date) => {
-    return availableDates.includes(date);
-  };
-
   // Filter flights by category
   const displayFlights = selectedCategory === 'all' 
     ? flights 
     : flights.filter(f => f.category === selectedCategory);
 
-  console.log('Current state:', {
-    loading,
-    categoriesCount: categories.length,
-    flightsCount: flights.length,
-    displayFlightsCount: displayFlights.length,
-    selectedCategory,
-    selectedFlight,
-    availableDates: availableDates.length
-  });
-
   if (loading) {
     return (
       <PageTransition>
         <div className="min-h-screen flex items-center justify-center">
-          <p className="text-purple-300">Loading flights from the system...</p>
+          <p className="text-primary">Loading flights from the system...</p>
         </div>
       </PageTransition>
     );
   }
 
-  if (!loading && flights.length === 0) {
+  if (!loading && (flights.length === 0 || fetchError)) {
     return (
       <PageTransition>
-        <div className="min-h-screen flex items-center justify-center">
-          <p className="text-red-500">No flights found. Please check if customers.csv is loaded.</p>
+        <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+          <p className="text-red-400 text-lg">
+            {fetchError ? 'Unable to connect to the backend.' : 'No flight data found.'}
+          </p>
+          <p className="text-gray-400 text-sm">Make sure the backend is running and data is seeded.</p>
+          <button
+            onClick={() => {
+              setLoading(true);
+              setFetchError(false);
+              setFlights([]);
+              fetch(`${API_BASE_URL}/flights`)
+                .then(r => r.json())
+                .then(data => {
+                  if (data.flights && data.flights.length > 0) {
+                    setFlights(data.flights);
+                    setCategories(['all', ...data.categories]);
+                  } else {
+                    setFetchError(true);
+                  }
+                })
+                .catch(() => setFetchError(true))
+                .finally(() => setLoading(false));
+            }}
+            className="px-6 py-2 bg-primary text-white rounded-lg hover:opacity-90 transition-opacity"
+          >
+            Retry
+          </button>
         </div>
       </PageTransition>
     );
@@ -129,7 +138,7 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
       <div className="min-h-screen pb-12">
         <Header 
           title="Meal Prediction System"
-          subtitle="AI-Powered In-Flight Meal Analytics & Optimization"
+          subtitle="AI-Powered In-Flight Meal Optimization"
         />
 
         <Container className="mt-8">
@@ -140,7 +149,7 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
             transition={{ delay: 0.2 }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 mb-6 shadow-lg shadow-purple-500/30">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-[hsl(var(--primary-dark,215_100%_25%))] mb-6 shadow-lg shadow-primary/30">
               <Plane className="w-10 h-10 text-white" />
             </div>
             <h2 className="text-4xl font-bold gradient-text mb-4">
@@ -168,7 +177,6 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
                     id="category"
                     value={selectedCategory}
                     onChange={(e) => {
-                      console.log('Category changed to:', e.target.value);
                       setSelectedCategory(e.target.value);
                     }}
                   >
@@ -196,11 +204,9 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
                     id="flight"
                     value={selectedFlight ? selectedFlight.flightNumber : ''}
                     onChange={(e) => {
-                      console.log('Flight changed to:', e.target.value);
                       const flight = displayFlights.find(
                         f => f.flightNumber === e.target.value
                       );
-                      console.log('Found flight:', flight);
                       setSelectedFlight(flight);
                       // Update available dates for this flight
                       if (flight && flight.availableDates) {
@@ -247,13 +253,11 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
                     value={flightDate || ''}
                     onChange={(e) => {
                       const selectedDate = e.target.value;
-                      console.log('Date selected:', selectedDate);
-                      console.log('Available dates:', availableDates);
+
                       
                       // Validate if the selected date is in available dates
                       if (availableDates.includes(selectedDate)) {
                         setFlightDate(selectedDate);
-                        console.log('Date accepted:', selectedDate);
                       } else {
                         // Show a user-friendly error
                         alert(`The date you selected is not available for this flight.\n\nPlease choose from one of the ${availableDates.length} available dates shown below.`);
@@ -293,9 +297,9 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
-                    className="mt-6 p-4 rounded-lg bg-purple-50 dark:bg-purple-950 border border-purple-200 dark:border-purple-800"
+                    className="mt-6 p-4 rounded-lg bg-primary/5 border border-primary/20"
                   >
-                    <h4 className="font-semibold text-purple-900 dark:text-purple-100 mb-2">
+                    <h4 className="font-semibold text-foreground mb-2">
                       Selected Flight Details
                     </h4>
                     <div className="grid grid-cols-2 gap-3 text-sm">
@@ -348,8 +352,8 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
             </Card>
           </motion.div>
 
-          {/* Info Cards */}
-          <motion.div
+          {/* Info Cards — hidden; re-enable by uncommenting the block below */}
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -380,7 +384,7 @@ function FlightSelectionScreen({ selectedFlight, setSelectedFlight, flightDate, 
                 </CardContent>
               </Card>
             ))}
-          </motion.div>
+          </motion.div> */}
         </Container>
       </div>
     </PageTransition>

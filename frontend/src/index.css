@@ -120,7 +120,7 @@
   
   /* Gradient text utility */
   .gradient-text {
-    background: linear-gradient(135deg, #9333ea 0%, #c026d3 50%, #facc15 100%);
+    background: linear-gradient(135deg, #003580 0%, #004B87 50%, #0066CC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -134,8 +134,8 @@
   }
   
   .btn-primary {
-    @apply bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg;
-    @apply hover:shadow-xl hover:from-purple-700 hover:to-purple-800;
+    @apply bg-gradient-to-r from-primary to-primary/90 text-white shadow-lg;
+    @apply hover:shadow-xl hover:opacity-90;
     @apply active:scale-95;
   }
   
@@ -230,7 +230,7 @@
   }
   
   .table-header {
-    @apply bg-purple-50 dark:bg-purple-950;
+    @apply bg-primary/5;
   }
   
   .table-row {

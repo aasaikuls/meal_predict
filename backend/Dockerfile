@@ -9,13 +9,16 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY main.py .
-COPY ai_summary.py .
-COPY meal_planning.py .
-COPY llm_con.py .
+COPY app/ ./app/
+COPY alembic/ ./alembic/
+COPY scripts/ ./scripts/
+COPY alembic.ini .
+COPY entrypoint.sh .
+
+RUN chmod +x entrypoint.sh
 
 # Expose port
 EXPOSE 8001
 
-# Run the application
-CMD ["python", "main.py"]
+ENTRYPOINT ["./entrypoint.sh"]
+

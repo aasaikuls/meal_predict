@@ -20,7 +20,7 @@ Table.displayName = 'Table';
 const TableHeader = React.forwardRef(({ className, ...props }, ref) => (
   <thead
     ref={ref}
-    className={cn('bg-purple-50 dark:bg-purple-950', className)}
+    className={cn('bg-primary/5 dark:bg-purple-950', className)}
     {...props}
   />
 ));

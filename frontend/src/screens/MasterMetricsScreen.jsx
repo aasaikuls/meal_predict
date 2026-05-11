@@ -14,7 +14,6 @@ import {
   CheckCircle2,
   Info,
   Globe,
-  Save,
   Home
 } from 'lucide-react';
 import axios from 'axios';
@@ -23,7 +22,7 @@ import Input from '../components/ui/Input';
 import Label from '../components/ui/Label';
 import Select from '../components/ui/Select';
 import Badge from '../components/ui/Badge';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui';
 import Container from '../components/layout/Container';
 import PageTransition from '../components/layout/PageTransition';
 import { useToast } from '../components/ui/Toast';
@@ -32,7 +31,7 @@ import { API_BASE_URL } from '../config';
 // Simple Accordion Component
 const Accordion = ({ children, expanded, onChange }) => {
   return (
-    <div className="rounded-xl bg-white border-2 border-purple-100 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+    <div className="rounded-xl bg-white border-2 border-primary/10 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
       {children}
     </div>
   );
@@ -42,7 +41,7 @@ const AccordionSummary = ({ children, expandIcon, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center justify-between p-6 text-left hover:bg-purple-50/50 transition-colors border-b border-purple-100"
+      className="w-full flex items-center justify-between p-6 text-left hover:bg-primary/5/50 transition-colors border-b border-primary/10"
     >
       {children}
       {expandIcon}
@@ -121,7 +120,6 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
   // Reset to defaults when component unmounts (user navigates away)
   useEffect(() => {
     return () => {
-      console.log('Navigating away from metrics screen - resetting to defaults');
       // This cleanup runs when component unmounts
       // Reset will happen on next mount through the normal load flow
     };
@@ -134,14 +132,13 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
       setLoadingMeals(true);
       
       // Fetch customer summary
-      axios.get(`${API_BASE_URL}/api/customer-summary`, {
+      axios.get(`${API_BASE_URL}/customer-summary`, {
         params: {
           flight_number: selectedFlight.flightNumber,
           flight_date: flightDate
         }
       })
         .then(response => {
-          console.log('Customer summary loaded:', response.data);
           setCustomerSummary(response.data);
         })
         .catch(err => {
@@ -154,14 +151,13 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
       
       // Fetch available meals
       const flightLabel = `${selectedFlight.flightNumber} (${selectedFlight.origin} → ${selectedFlight.destination})`;
-      axios.get(`${API_BASE_URL}/api/available-meals`, {
+      axios.get(`${API_BASE_URL}/available-meals`, {
         params: {
           flight_number: flightLabel,
           flight_date: flightDate
         }
       })
         .then(response => {
-          console.log('Available meals loaded:', response.data);
           setAvailableMeals(response.data);
         })
         .catch(err => {
@@ -182,16 +178,14 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
       params.flight_date = flightDate;
     }
     
-    axios.get(`${API_BASE_URL}/api/master-metrics`, { params })
+    axios.get(`${API_BASE_URL}/master-metrics`, { params })
       .then(response => {
-        console.log('Master metrics loaded (meal-time-structured):', response.data);
         setMasterData(response.data);
         setOriginalMasterData(JSON.parse(JSON.stringify(response.data))); // Deep copy for comparison
         
         // Store meal-time-specific proteins (NEW)
         if (response.data.available_proteins_by_mealtime) {
           setAvailableProteinsByMealtime(response.data.available_proteins_by_mealtime);
-          console.log('Meal-time-specific proteins:', response.data.available_proteins_by_mealtime);
         }
         
         // Set default selections - now data is structured by meal time
@@ -215,7 +209,6 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
           const mealTimes = Object.keys(response.data.destination_sample);
           if (mealTimes.length > 0) {
             const firstMealTimeData = response.data.destination_sample[mealTimes[0]];
-            console.log('Destination sample (meal-time-structured):', firstMealTimeData);
             // Auto-select destination based on flight destination airport
             const destinationAirport = selectedFlight?.destination;
             if (destinationAirport && firstMealTimeData) {
@@ -224,7 +217,6 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
               );
               if (destinationIndex !== -1) {
                 setSelectedDestination(String(destinationIndex));
-                console.log(`Auto-selected destination: ${destinationAirport} at index ${destinationIndex}`);
               } else {
                 setSelectedDestination('0');
               }
@@ -240,7 +232,6 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
           if (availableMealTimesOnFlight.length > 0) {
             // Use the first meal time that's actually available on this flight
             setSelectedMealTimeView(availableMealTimesOnFlight[0]);
-            console.log(`Initial meal time view set to: ${availableMealTimesOnFlight[0]}`);
           }
         }
         
@@ -249,12 +240,11 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
         
         // Initialize session memory with normalized/restricted probabilities
         if (flightLabel && flightDate && !sessionInitialized) {
-          axios.post(`${API_BASE_URL}/api/initialize-session`, {
+          axios.post(`${API_BASE_URL}/initialize-session`, {
             flight_number: flightLabel,
             flight_date: flightDate
           })
             .then(sessionResponse => {
-              console.log('✅ Session initialized');
               setSessionKey(sessionResponse.data.session_key);
               setSessionInitialized(true);
               toast('Session initialized with default probabilities', 'success');
@@ -272,14 +262,12 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
   }, [toast, selectedFlight, flightDate, sessionInitialized]);
 
   useEffect(() => {
-    console.log('🔄 Weights updated in MasterMetricsScreen, syncing to App.js:', localMetrics);
     setMasterMetrics(localMetrics);
   }, [localMetrics, setMasterMetrics]);
 
   // Update weekday when customer summary is loaded
   useEffect(() => {
     if (customerSummary && customerSummary.day_of_week) {
-      console.log(`📅 Setting weekday from customer summary: ${customerSummary.day_of_week}`);
       setSelectedWeekday(customerSummary.day_of_week);
     }
   }, [customerSummary]);
@@ -288,13 +276,12 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
   useEffect(() => {
     if (sessionKey && sessionInitialized) {
       const loadModifiedRows = () => {
-        axios.get(`${API_BASE_URL}/api/get-modified-rows`, {
+        axios.get(`${API_BASE_URL}/get-modified-rows`, {
           params: { session_key: sessionKey }
         })
           .then(response => {
             setModifiedRows(response.data.modified_rows || []);
             if (response.data.count > 0) {
-              console.log(`📊 ${response.data.count} modified rows`);
             }
           })
           .catch(err => {
@@ -310,7 +297,6 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
   }, [sessionKey, sessionInitialized]);
 
   const handleSliderChange = (metric, value) => {
-    console.log(`🎚️ Weight slider changed: ${metric} = ${value}%`);
     setLocalMetrics({ ...localMetrics, [metric]: value });
   };
 
@@ -333,12 +319,10 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
     
     if (updatedData[sampleKey] && updatedData[sampleKey][mealTime] && updatedData[sampleKey][mealTime][index]) {
       const row = { ...updatedData[sampleKey][mealTime][index] };
-      const oldValue = row[protein];
       const numValue = parseFloat(inputValue);
       // Store the numeric value, or 0 if invalid
       row[protein] = (!isNaN(numValue) ? numValue : 0) / 100;
       
-      console.log(`📝 Metric Changed: ${category} - ${mealTime} - ${protein}: ${(oldValue * 100).toFixed(1)}% → ${inputValue}%`);
       
       updatedData[sampleKey][mealTime][index] = row;
       setMasterData(updatedData);
@@ -362,20 +346,17 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
     
     if (!isBalanced) {
       toast(`Warning: Protein percentages total ${rowTotal.toFixed(1)}% instead of 100%`, 'warning');
-      console.warn(`⚠️  Validation Failed: ${category} - ${mealTime} - Total: ${rowTotal.toFixed(1)}%`);
       return false;
     }
     
     const row = data[mealTime][index];
     const allProteinColumns = ['Pork', 'Chicken', 'Beef', 'Seafood', 'Lamb', 'Vegetarian'];
-    console.log(`✅ Row Validated & Saved: ${category} - ${mealTime}`);
     
     // Prepare probabilities object for backend
     const probabilities = {};
     allProteinColumns.forEach(protein => {
       if (row[protein] !== undefined) {
         probabilities[protein] = row[protein];
-        console.log(`   ${protein}: ${(row[protein] * 100).toFixed(1)}%`);
       }
     });
     
@@ -394,13 +375,12 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
     // Update session memory in backend
     if (sessionKey && row_key) {
       try {
-        const response = await axios.post(`${API_BASE_URL}/api/update-session-probability`, {
+        await axios.post(`${API_BASE_URL}/update-session-probability`, {
           session_key: sessionKey,
           metric_type: category,
           row_key: row_key,
           probabilities: probabilities
         });
-        console.log('📤 Session memory updated:', response.data);
       } catch (err) {
         console.error('❌ Error updating session memory:', err);
         toast('Failed to update session memory', 'error');
@@ -514,22 +494,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
       destination_importance: 25,
       mealtime_importance: 15,
     };
-    
-    console.log('\n🔄 === RESET TO DEFAULTS CLICKED ===');
-    console.log('Previous weights:', {
-      nationality_importance: localMetrics.nationality_importance,
-      age_importance: localMetrics.age_importance,
-      destination_importance: localMetrics.destination_importance,
-      mealtime_importance: localMetrics.mealtime_importance
-    });
-    console.log('Resetting to default weights:', defaultMetrics);
-    
-    // Log if there were any custom changes being discarded
-    const weightChanges = getChangedWeights();
-    if (weightChanges.length > 0) {
-      console.log(`⚠️  Discarding ${weightChanges.length} weight changes`);
-    }
-    
+
     setLocalMetrics(defaultMetrics);
     
     // Reload master data from backend with flight parameters
@@ -542,7 +507,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
     }
     
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/master-metrics`, { params });
+      const response = await axios.get(`${API_BASE_URL}/master-metrics`, { params });
       setMasterData(response.data);
       setOriginalMasterData(JSON.parse(JSON.stringify(response.data)));
       
@@ -551,11 +516,10 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
       
       // Reinitialize session memory with defaults
       if (flightLabel && flightDate) {
-        const sessionResponse = await axios.post(`${API_BASE_URL}/api/initialize-session`, {
+        const sessionResponse = await axios.post(`${API_BASE_URL}/initialize-session`, {
           flight_number: flightLabel,
           flight_date: flightDate
         });
-        console.log('✅ Session reset to defaults');
         setSessionKey(sessionResponse.data.session_key);
         setSessionInitialized(true);
         setModifiedRows([]); // Clear modified rows since we reset to defaults
@@ -739,30 +703,6 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
       return;
     }
     
-    console.log('\n🚀 === RUNNING PREDICTION ===');
-    console.log(`Flight: ${selectedFlight?.flightNumber} on ${flightDate}`);
-    console.log(`Analysis Cabin: ${customerSummary?.analysis_cabin || 'Unknown'}`);
-    console.log(`Total Passengers: ${customerSummary?.total_customers || 'Unknown'}`);
-    
-    // Check if using custom or default weights
-    const isDefaultWeights = (
-      localMetrics.nationality_importance === 40 &&
-      localMetrics.age_importance === 20 &&
-      localMetrics.destination_importance === 25 &&
-      localMetrics.mealtime_importance === 15
-    );
-    
-    console.log('\n📊 WEIGHTS BEING USED FOR PREDICTION:');
-    console.log(isDefaultWeights ? '   Type: DEFAULT WEIGHTS' : '   Type: CUSTOM WEIGHTS ⚠️');
-    console.log(`   Nationality Importance: ${localMetrics.nationality_importance}%`);
-    console.log(`   Age Importance: ${localMetrics.age_importance}%`);
-    console.log(`   Destination Importance: ${localMetrics.destination_importance}%`);
-    console.log(`   Mealtime Importance: ${localMetrics.mealtime_importance}%`);
-    console.log(`   Total: ${localMetrics.nationality_importance + localMetrics.age_importance + localMetrics.destination_importance + localMetrics.mealtime_importance}%`);
-    
-    console.log('\n📈 PROBABILITIES: Using session memory values');
-    
-    console.log('\n' + '='.repeat(80));
     
     // Collect ONLY VALIDATED custom probability data from masterData
     // Only rows that have been validated (user clicked "Validate and Save Below") are sent
@@ -891,17 +831,6 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
     setMasterMetrics(collectedMetrics);
     setPredictionResults(null); // Clear previous results
     
-    console.log('\n✅ PREDICTION DATA PREPARED AND SENT');
-    console.log('Summary:');
-    console.log(`   - Weights: ${isDefaultWeights ? 'DEFAULT' : 'CUSTOM'}`);
-    console.log(`   - Custom Probabilities: ${customProbCount} validated rows`);
-    console.log(`     • Nationality: ${Object.keys(collectedMetrics.nationality_data).length} custom entries`);
-    console.log(`     • Age: ${Object.keys(collectedMetrics.age_data).length} custom entries`);
-    console.log(`     • Destination: ${Object.keys(collectedMetrics.destination_data).length} custom entries`);
-    console.log(`     • Mealtime: ${Object.keys(collectedMetrics.mealtime_data).length} custom entries`);
-    console.log(`   - Backend will use: ${customProbCount > 0 ? 'CUSTOM probabilities for validated rows + CSV defaults for rest' : 'CSV DEFAULT probabilities only'}`);
-    console.log('\nNavigating to prediction screen...');
-    console.log('='.repeat(80) + '\n');
     
     navigate('/prediction');
   };
@@ -928,7 +857,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
       <div className="space-y-8">
         {/* Single dropdown for Age, Destination, Mealtime (appears once at top) */}
         {category === 'age' && firstMealTimeData && (
-          <div className="mb-6 p-4 bg-purple-50 rounded-xl border-2 border-purple-200">
+          <div className="mb-6 p-4 bg-primary/5 rounded-xl border-2 border-primary/20">
             <Label htmlFor="age-select" className="text-base font-semibold mb-2">
               Select Age Group (applies to all meal times)
             </Label>
@@ -948,7 +877,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
         )}
 
         {category === 'destination' && firstMealTimeData && (
-          <div className="mb-6 p-4 bg-purple-50 rounded-xl border-2 border-purple-200">
+          <div className="mb-6 p-4 bg-primary/5 rounded-xl border-2 border-primary/20">
             <Label htmlFor="destination-select" className="text-base font-semibold mb-2">
               Select Destination (applies to all meal times)
             </Label>
@@ -968,7 +897,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
         )}
 
         {category === 'mealtime' && (
-          <div className="mb-6 p-4 bg-purple-50 rounded-xl border-2 border-purple-200">
+          <div className="mb-6 p-4 bg-primary/5 rounded-xl border-2 border-primary/20">
             <div className="flex items-start justify-between gap-4 mb-3">
               <div className="flex-1">
                 <Label htmlFor="mealtime-view-select" className="text-base font-semibold mb-2">
@@ -1039,11 +968,11 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
             const isBalanced = Math.abs(rowTotal - 100) < 0.1;
 
             return (
-              <div key={mealTime} className="border-4 border-purple-200 rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-white">
+              <div key={mealTime} className="border-4 border-primary/20 rounded-2xl p-6 bg-gradient-to-br from-primary/5 to-white">
                 {/* Meal Time Header */}
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-purple-200">
-                  <Clock className="w-6 h-6 text-purple-600" />
-                  <h3 className="text-2xl font-bold text-purple-900">{mealTime} Probabilities</h3>
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary/20">
+                  <Clock className="w-6 h-6 text-primary" />
+                  <h3 className="text-2xl font-bold text-foreground">{mealTime} Probabilities</h3>
                   <Badge variant="default" className="ml-auto">
                     {proteinColumns.length} Proteins Available
                   </Badge>
@@ -1105,7 +1034,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                               }}
                               className="pr-8 text-center font-bold"
                             />
-                            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-purple-600 font-bold text-sm">%</span>
+                            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm">%</span>
                           </div>
                         </div>
                       );
@@ -1183,11 +1112,11 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
           const isBalanced = Math.abs(rowTotal - 100) < 0.1;
 
           return (
-            <div key={mealTime} className="border-4 border-purple-200 rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-white">
+            <div key={mealTime} className="border-4 border-primary/20 rounded-2xl p-6 bg-gradient-to-br from-primary/5 to-white">
               {/* Meal Time Header */}
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-purple-200">
-                <Clock className="w-6 h-6 text-purple-600" />
-                <h3 className="text-2xl font-bold text-purple-900">{mealTime}</h3>
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary/20">
+                <Clock className="w-6 h-6 text-primary" />
+                <h3 className="text-2xl font-bold text-foreground">{mealTime}</h3>
                 <Badge variant="default" className="ml-auto">
                   {proteinColumns.length} Proteins Available
                 </Badge>
@@ -1274,7 +1203,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
               {/* Protein Inputs */}
               <div className={`p-6 rounded-xl border-2 ${isBalanced ? 'border-green-300 bg-green-50/30' : 'border-orange-300 bg-orange-50/30'}`}>
                 <div className="flex justify-between items-center mb-6">
-                  <h4 className="text-lg font-bold text-purple-900">
+                  <h4 className="text-lg font-bold text-foreground">
                     {category === 'nationality' && `${selectedNationality} - ${selectedWeekday}`}
                     {category === 'age' && `Age Group: ${selectedRow?.age_group || selectedRow?.Age || 'Unknown'}`}
                     {category === 'destination' && `Destination: ${selectedRow?.airport_code || selectedRow?.Destination || 'Unknown'}`}
@@ -1314,7 +1243,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                             }}
                             className="pr-8 text-center font-bold"
                           />
-                          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-purple-600 font-bold text-sm">%</span>
+                          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm">%</span>
                         </div>
                       </div>
                     );
@@ -1364,7 +1293,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-gradient-to-br from-purple-50 to-white rounded-3xl shadow-2xl p-8 max-w-md w-full mx-4 border-2 border-purple-200"
+            className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full mx-4 border-2 border-primary/30"
           >
             {/* Header */}
             <div className="text-center mb-6">
@@ -1374,7 +1303,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                   <span>Metrics Redefined</span>
                 </div>
               ) : (
-                <h2 className="text-2xl font-bold text-purple-900">Redefining Master Metrics</h2>
+                <h2 className="text-2xl font-bold text-foreground">Redefining Master Metrics</h2>
               )}
             </div>
 
@@ -1387,15 +1316,15 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full"
+                      className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full"
                     />
                   </div>
 
                   {/* Progress bar */}
                   <div className="space-y-2">
-                    <div className="h-3 bg-purple-100 rounded-full overflow-hidden">
+                    <div className="h-3 bg-primary/10 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-gradient-to-r from-purple-600 to-yellow-500 rounded-full"
+                        className="h-full bg-gradient-to-r from-primary to-yellow-500 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: `${redefineProgress}%` }}
                         transition={{ duration: 0.5 }}
@@ -1413,7 +1342,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center min-h-[60px] flex items-center justify-center"
                   >
-                    <p className="text-purple-900 font-medium">{redefineStep}</p>
+                    <p className="text-foreground font-medium">{redefineStep}</p>
                   </motion.div>
                 </>
               ) : (
@@ -1428,16 +1357,16 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
           </motion.div>
         </div>
       )}
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50/30">
+      <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-primary/5/30">
         {/* Header */}
-        <div className="bg-gradient-to-r from-purple-600 to-purple-800 shadow-lg">
+        <div className="bg-gradient-to-r from-[hsl(var(--primary-dark,215_100%_25%))] to-primary shadow-lg">
           <Container>
             <div className="py-6 flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-white mb-2">
                   Master Metrics Configuration
                 </h1>
-                <p className="text-purple-100">
+                <p className="text-white/80">
                   Flight {selectedFlight?.route} • {flightDate}
                 </p>
               </div>
@@ -1499,18 +1428,31 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                     <div className="p-3 bg-blue-50 rounded-lg border-2 border-blue-200">
                       <div className="flex justify-between items-center">
                         <div className="flex-1">
-                          <span className="font-semibold text-gray-800 block">Passengers Without Pre-Booked Meals</span>
-                          <span className="text-xs text-gray-600 mt-1 block">Passengers requiring meal prediction</span>
+                          <span className="font-semibold text-gray-800 block">Total Passengers</span>
+                          <span className="text-xs text-gray-600 mt-1 block">All boarded passengers</span>
                         </div>
                         <Badge variant="default" className="text-lg px-4 py-1 ml-4">
                           {customerSummary.total_customers}
                         </Badge>
                       </div>
                     </div>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+                        <span className="text-xs text-green-700 font-medium block mb-1">Pre-Booked Meals</span>
+                        <span className="text-xl font-bold text-green-800">{customerSummary.pre_booked_passengers ?? 0}</span>
+                        <span className="text-xs text-green-600 block">Already selected</span>
+                      </div>
+                      <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
+                        <span className="text-xs text-orange-700 font-medium block mb-1">Needs Prediction</span>
+                        <span className="text-xl font-bold text-orange-800">{customerSummary.passengers_needing_prediction ?? customerSummary.total_customers}</span>
+                        <span className="text-xs text-orange-600 block">AI will recommend</span>
+                      </div>
+                    </div>
                     
-                    <div className="p-3 bg-purple-50 rounded-lg">
+                    <div className="p-3 bg-primary/5 rounded-lg">
                       <span className="font-medium text-gray-700 block mb-2">Destination</span>
-                      <p className="text-xl font-bold text-purple-700">
+                      <p className="text-xl font-bold text-primary/80">
                         {customerSummary.destination_airport}
                       </p>
                     </div>
@@ -1541,9 +1483,9 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                 </Card>
 
                 {/* Detailed Analysis Card */}
-                <Card className="shadow-lg border-2 border-purple-100">
-                  <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100/50">
-                    <CardTitle className="flex items-center gap-2 text-purple-900">
+                <Card className="shadow-lg border-2 border-primary/10">
+                  <CardHeader className="bg-gradient-to-r from-primary/5 to-purple-100/50">
+                    <CardTitle className="flex items-center gap-2 text-foreground">
                       <TrendingUp className="w-5 h-5" />
                       Class {customerSummary.analysis_cabin} Demographics
                     </CardTitle>
@@ -1555,10 +1497,10 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                     {/* Nationality Breakdown */}
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                        <Globe className="w-4 h-4 text-purple-600" />
+                        <Globe className="w-4 h-4 text-primary" />
                         Nationality Distribution
                       </h4>
-                      <div className="max-h-48 overflow-y-auto border border-purple-200 rounded-lg p-3 bg-purple-50/30">
+                      <div className="max-h-48 overflow-y-auto border border-primary/20 rounded-lg p-3 bg-primary/5/30">
                         <div className="space-y-2">
                           {Object.entries(customerSummary.nationality_breakdown)
                             .sort((a, b) => b[1] - a[1])
@@ -1568,13 +1510,13 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                                 <div className="flex items-center gap-2">
                                   <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
                                     <div 
-                                      className="h-full bg-gradient-to-r from-purple-500 to-purple-600"
+                                      className="h-full bg-gradient-to-r from-primary/80 to-purple-600"
                                       style={{ 
                                         width: `${(count / customerSummary.total_customers) * 100}%` 
                                       }}
                                     />
                                   </div>
-                                  <span className="font-bold text-purple-700 w-12 text-right">{count}</span>
+                                  <span className="font-bold text-primary/80 w-12 text-right">{count}</span>
                                 </div>
                               </div>
                             ))}
@@ -1646,7 +1588,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
             </div>
 
             {loadingMeals ? (
-              <Card className="shadow-lg border-2 border-purple-100">
+              <Card className="shadow-lg border-2 border-primary/10">
                 <CardContent className="py-12 text-center">
                   <p className="text-gray-500">Loading meal data...</p>
                 </CardContent>
@@ -1717,10 +1659,10 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-700 shadow-lg">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-primary to-primary/90 shadow-lg">
                 <TrendingUp className="w-10 h-10 text-white" />
               </div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-[hsl(var(--primary-dark,215_100%_25%))] to-primary bg-clip-text text-transparent">
                 Master Metrics Configuration
               </h1>
             </div>
@@ -1752,7 +1694,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
 
           {/* Action Buttons */}
           <div className="flex justify-end gap-3 mb-6">
-            <Button onClick={handleRedefineDefaults} disabled={isRedefining} variant="default" size="md" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white">
+            <Button onClick={handleRedefineDefaults} disabled={isRedefining} variant="default" size="md" className="bg-gradient-to-r from-primary to-primary/90 hover:from-purple-700 hover:to-purple-800 text-white">
               <TrendingUp className="w-4 h-4 mr-2" />
               Redefine Metrics
             </Button>
@@ -1773,13 +1715,13 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                     animate={{ rotate: expanded === 'panel1' ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="w-6 h-6 text-purple-600" />
+                    <ChevronDown className="w-6 h-6 text-primary" />
                   </motion.div>
                 }
               >
                 <div className="flex items-center justify-between w-full pr-4">
                   <div className="flex items-center gap-3">
-                    <Users className="w-6 h-6 text-purple-600" />
+                    <Users className="w-6 h-6 text-primary" />
                     <span className="text-lg font-semibold text-gray-900">
                       Weekday-Adjusted Nationality
                     </span>
@@ -1790,7 +1732,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                 </div>
               </AccordionSummary>
               <AccordionDetails expanded={expanded === 'panel1'}>
-                <div className="bg-purple-50/50 p-4 rounded-lg mb-6">
+                <div className="bg-primary/5/50 p-4 rounded-lg mb-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-700 font-medium mb-1">
@@ -1824,7 +1766,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                           }}
                           className="pr-8 text-center font-bold"
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-purple-600 font-bold text-sm">
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm">
                           %
                         </span>
                       </div>
@@ -1844,13 +1786,13 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                     animate={{ rotate: expanded === 'panel2' ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="w-6 h-6 text-purple-600" />
+                    <ChevronDown className="w-6 h-6 text-primary" />
                   </motion.div>
                 }
               >
                 <div className="flex items-center justify-between w-full pr-4">
                   <div className="flex items-center gap-3">
-                    <Calendar className="w-6 h-6 text-purple-600" />
+                    <Calendar className="w-6 h-6 text-primary" />
                     <span className="text-lg font-semibold text-gray-900">
                       Age of Passengers
                     </span>
@@ -1861,7 +1803,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                 </div>
               </AccordionSummary>
               <AccordionDetails expanded={expanded === 'panel2'}>
-                <div className="bg-purple-50/50 p-4 rounded-lg mb-6">
+                <div className="bg-primary/5/50 p-4 rounded-lg mb-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-700 font-medium mb-1">
@@ -1895,7 +1837,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                           }}
                           className="pr-8 text-center font-bold"
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-purple-600 font-bold text-sm">
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm">
                           %
                         </span>
                       </div>
@@ -1915,13 +1857,13 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                     animate={{ rotate: expanded === 'panel3' ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="w-6 h-6 text-purple-600" />
+                    <ChevronDown className="w-6 h-6 text-primary" />
                   </motion.div>
                 }
               >
                 <div className="flex items-center justify-between w-full pr-4">
                   <div className="flex items-center gap-3">
-                    <MapPin className="w-6 h-6 text-purple-600" />
+                    <MapPin className="w-6 h-6 text-primary" />
                     <span className="text-lg font-semibold text-gray-900">
                       Destination of Flight
                     </span>
@@ -1932,7 +1874,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                 </div>
               </AccordionSummary>
               <AccordionDetails expanded={expanded === 'panel3'}>
-                <div className="bg-purple-50/50 p-4 rounded-lg mb-6">
+                <div className="bg-primary/5/50 p-4 rounded-lg mb-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-700 font-medium mb-1">
@@ -1966,7 +1908,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                           }}
                           className="pr-8 text-center font-bold"
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-purple-600 font-bold text-sm">
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm">
                           %
                         </span>
                       </div>
@@ -1986,13 +1928,13 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                     animate={{ rotate: expanded === 'panel4' ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="w-6 h-6 text-purple-600" />
+                    <ChevronDown className="w-6 h-6 text-primary" />
                   </motion.div>
                 }
               >
                 <div className="flex items-center justify-between w-full pr-4">
                   <div className="flex items-center gap-3">
-                    <Clock className="w-6 h-6 text-purple-600" />
+                    <Clock className="w-6 h-6 text-primary" />
                     <span className="text-lg font-semibold text-gray-900">
                       Meal Time
                     </span>
@@ -2003,7 +1945,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                 </div>
               </AccordionSummary>
               <AccordionDetails expanded={expanded === 'panel4'}>
-                <div className="bg-purple-50/50 p-4 rounded-lg mb-6">
+                <div className="bg-primary/5/50 p-4 rounded-lg mb-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-700 font-medium mb-1">
@@ -2037,7 +1979,7 @@ function MasterMetricsScreen({ selectedFlight, flightDate, masterMetrics, setMas
                           }}
                           className="pr-8 text-center font-bold"
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-purple-600 font-bold text-sm">
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm">
                           %
                         </span>
                       </div>

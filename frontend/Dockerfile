@@ -1,24 +1,28 @@
-FROM node:18-alpine
+# ── Stage 1: Build ──────────────────────────────────────────────────────────
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy configuration files
 COPY config-overrides.js .
 COPY postcss.config.js .
 COPY tailwind.config.js .
-
-# Copy application code
+COPY .env* ./
 COPY public ./public
 COPY src ./src
 
-# Expose port
+RUN npm run build
+
+# ── Stage 2: Serve ───────────────────────────────────────────────────────────
+FROM node:18-alpine
+
+RUN npm install -g serve
+
+WORKDIR /app
+COPY --from=builder /app/build ./build
+
 EXPOSE 3001
 
-# Start the application
-CMD ["npm", "start"]
+CMD ["serve", "-s", "build", "-l", "3001"]

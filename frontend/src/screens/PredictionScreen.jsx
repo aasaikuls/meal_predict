@@ -27,7 +27,7 @@ const workflowSteps = [
     id: 1,
     label: 'Loading Passenger Data', 
     description: 'Fetching booking data and passenger details',
-    duration: 2000,
+    duration: 3000,
     icon: Database,
     color: '#3B82F6',
   },
@@ -35,7 +35,7 @@ const workflowSteps = [
     id: 2,
     label: 'Analyzing Nationality', 
     description: 'Processing weekday-adjusted nationality preferences',
-    duration: 2000,
+    duration: 3000,
     icon: Users,
     color: '#9333EA',
   },
@@ -43,7 +43,7 @@ const workflowSteps = [
     id: 3,
     label: 'Processing Age Demographics', 
     description: 'Evaluating age group protein preferences',
-    duration: 2000,
+    duration: 3000,
     icon: Cake,
     color: '#EC4899',
   },
@@ -51,7 +51,7 @@ const workflowSteps = [
     id: 4,
     label: 'Evaluating Destination', 
     description: 'Analyzing regional and cultural preferences',
-    duration: 2000,
+    duration: 3000,
     icon: MapPin,
     color: '#14B8A6',
   },
@@ -59,7 +59,7 @@ const workflowSteps = [
     id: 5,
     label: 'Calculating Meal Time', 
     description: 'Determining time-of-day patterns',
-    duration: 2000,
+    duration: 3000,
     icon: UtensilsCrossed,
     color: '#F59E0B',
   },
@@ -67,7 +67,7 @@ const workflowSteps = [
     id: 6,
     label: 'Running LLM Model', 
     description: 'AI processing all factors and metrics',
-    duration: 2000,
+    duration: 3000,
     icon: Bot,
     color: '#8B5CF6',
   },
@@ -75,7 +75,7 @@ const workflowSteps = [
     id: 7,
     label: 'Optimizing Proportions', 
     description: 'Fine-tuning meal predictions',
-    duration: 2000,
+    duration: 3000,
     icon: Settings,
     color: '#F97316',
   },
@@ -83,7 +83,7 @@ const workflowSteps = [
     id: 8,
     label: 'Generating Results', 
     description: 'Finalizing recommendations',
-    duration: 2000,
+    duration: 3000,
     icon: ClipboardCheck,
     color: '#06B6D4',
   },
@@ -95,7 +95,6 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
   const [currentStep, setCurrentStep] = useState(-1);
   const [progress, setProgress] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [apiComplete, setApiComplete] = useState(false);
 
   const startPredictionRef = React.useRef();
   
@@ -104,7 +103,6 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
     setCurrentStep(0);
     setProgress(0);
     setElapsedTime(0);
-    setApiComplete(false);
 
     const totalDuration = workflowSteps.reduce((sum, step) => sum + step.duration, 0);
     let accumulatedTime = 0;
@@ -112,21 +110,17 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
     // Start API call immediately in parallel with animation
     const apiPromise = (async () => {
       try {
-        console.log('[PredictionScreen] Starting API call to /api/predict (in parallel)');
         const flightLabel = `${selectedFlight.flightNumber} (${selectedFlight.origin} → ${selectedFlight.destination})`;
-        const response = await axios.post(`${API_BASE_URL}/api/predict`, {
+        const response = await axios.post(`${API_BASE_URL}/predict`, {
           flight_number: flightLabel,
           flight_date: flightDate,
           master_metrics: masterMetrics,
         });
         
-        console.log('[PredictionScreen] API Response received:', response.data);
         setPredictionResults(response.data);
-        setApiComplete(true);
         return response.data;
       } catch (error) {
         console.error('[PredictionScreen] Error fetching prediction:', error);
-        setApiComplete(true);
         throw error;
       }
     })();
@@ -153,13 +147,11 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
     }
 
     // Wait for API to complete if animation finishes first
-    console.log('[PredictionScreen] Animation complete, waiting for API...');
     await apiPromise;
     
     setProgress(100);
     setCurrentStep(workflowSteps.length);
     setIsRunning(false);
-    console.log('[PredictionScreen] Both animation and API complete');
   };
 
   useEffect(() => {
@@ -219,8 +211,8 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
       >
         <Card className={`
           h-full transition-all duration-300 overflow-visible
-          ${state === 'active' ? 'border-purple-600 border-3 shadow-xl shadow-purple-500/30' : ''}
-          ${state === 'completed' ? 'border-green-500 border-2 bg-gradient-to-br from-purple-50 to-green-50' : ''}
+          ${state === 'active' ? 'border-primary border-3 shadow-xl shadow-primary/30' : ''}
+          ${state === 'completed' ? 'border-green-500 border-2 bg-gradient-to-br from-primary/5 to-green-50' : ''}
           ${state === 'pending' ? 'border-gray-200 bg-gray-50/50' : ''}
           hover:-translate-y-1 hover:shadow-lg
         `}>
@@ -228,7 +220,7 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
             {/* Icon Container */}
             <div className={`
               mb-4 mx-auto w-18 h-18 rounded-full flex items-center justify-center
-              ${state === 'active' ? 'bg-gradient-to-br from-purple-600 to-purple-700 shadow-lg shadow-purple-500/50 animate-pulse' : ''}
+              ${state === 'active' ? 'bg-gradient-to-br from-primary to-primary/90 shadow-lg shadow-primary/50 animate-pulse' : ''}
               ${state === 'completed' ? 'bg-gradient-to-br from-green-500 to-green-600 shadow-md' : ''}
               ${state === 'pending' ? 'bg-gray-200' : ''}
             `}>
@@ -244,7 +236,7 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
             {/* Label */}
             <h3 className={`
               text-base font-bold mb-2 transition-colors
-              ${state === 'active' ? 'text-purple-900' : ''}
+              ${state === 'active' ? 'text-foreground' : ''}
               ${state === 'completed' ? 'text-green-900' : ''}
               ${state === 'pending' ? 'text-gray-500' : ''}
             `}>
@@ -254,7 +246,7 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
             {/* Description */}
             <p className={`
               text-sm transition-colors
-              ${state === 'active' ? 'text-purple-700' : ''}
+              ${state === 'active' ? 'text-primary/80' : ''}
               ${state === 'completed' ? 'text-green-700' : ''}
               ${state === 'pending' ? 'text-gray-400' : ''}
             `}>
@@ -269,7 +261,7 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
                 </Badge>
               )}
               {state === 'active' && (
-                <Badge variant="default" className="bg-purple-600 animate-pulse">
+                <Badge variant="default" className="bg-primary animate-pulse">
                   Processing
                 </Badge>
               )}
@@ -287,16 +279,16 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+      <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-blue-50">
         {/* Header */}
-        <div className="bg-gradient-to-r from-purple-600 to-purple-800 shadow-lg">
+        <div className="bg-gradient-to-r from-[hsl(var(--primary-dark,215_100%_25%))] to-primary shadow-lg">
           <Container>
             <div className="py-6 flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-white mb-2">
                   Meal Prediction Analysis
                 </h1>
-                <p className="text-purple-100">
+                <p className="text-white/80">
                   Flight {selectedFlight?.route} • {flightDate}
                 </p>
               </div>
@@ -323,7 +315,7 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
               >
                 {/* Title */}
                 <div className="text-center mb-8">
-                  <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent mb-3">
+                  <h2 className="text-4xl font-bold bg-gradient-to-r from-[hsl(var(--primary-dark,215_100%_25%))] to-primary bg-clip-text text-transparent mb-3">
                     AI Prediction in Progress
                   </h2>
                   <p className="text-lg text-gray-600">
@@ -332,25 +324,25 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
                 </div>
 
                 {/* Overall Progress */}
-                <Card className="mb-8 border-2 border-purple-200 shadow-lg">
+                <Card className="mb-8 border-2 border-primary/20 shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex justify-between items-center mb-4">
-                      <h3 className="text-xl font-bold text-purple-900">
+                      <h3 className="text-xl font-bold text-foreground">
                         Overall Progress
                       </h3>
                       <div className="flex gap-6 items-center">
                         <span className="text-sm text-gray-600">
                           Time: {formatTime(elapsedTime)}
                         </span>
-                        <span className="text-lg font-bold text-purple-600">
+                        <span className="text-lg font-bold text-primary">
                           {Math.round(progress)}%
                         </span>
                       </div>
                     </div>
                     {/* Progress Bar */}
-                    <div className="relative h-4 bg-purple-100 rounded-full overflow-hidden">
+                    <div className="relative h-4 bg-primary/10 rounded-full overflow-hidden">
                       <motion.div
-                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full"
+                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-primary/90 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.3 }}
@@ -365,12 +357,6 @@ function PredictionScreen({ selectedFlight, flightDate, masterMetrics, predictio
                 </div>
               </motion.div>
             )}
-
-            {(() => {
-              console.log('[PredictionScreen-Render] isRunning:', isRunning, 'predictionResults:', predictionResults);
-              console.log('[PredictionScreen-Render] Will show results:', !isRunning && predictionResults);
-              return null;
-            })()}
 
             {!isRunning && predictionResults && (
               <motion.div

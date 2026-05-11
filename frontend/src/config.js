@@ -7,18 +7,9 @@ const getApiBaseUrl = () => {
   const protocol = window.location.protocol;
   
   // Backend always runs on port 8001
-  const apiUrl = `${protocol}//${hostname}:8001`;
-  
-  console.log('🔧 API Configuration:', {
-    frontendUrl: window.location.href,
-    hostname: hostname,
-    protocol: protocol,
-    apiUrl: apiUrl
-  });
+  const apiUrl = `${protocol}//${hostname}:8001/api/v1`;
   
   return apiUrl;
 };
 
 export const API_BASE_URL = getApiBaseUrl();
-
-console.log('📡 Final API_BASE_URL:', API_BASE_URL);

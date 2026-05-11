@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Download, CheckCircle2, Users, TrendingUp, Lightbulb, Info, Brain, Coffee, Utensils, Moon } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
+import { Card, CardHeader, CardTitle, CardContent } from './ui/Card';
 import Badge from './ui/Badge';
 import Button from './ui/Button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/Table';
-import axios from 'axios';
-import { API_BASE_URL } from '../config';
 
 function ResultsDisplay({ results, selectedFlight, flightDate }) {
-  console.log('[ResultsDisplay] Rendering with results:', results);
-  
   const [aiSummaries, setAiSummaries] = useState({});
   
   // Extract data before early return
@@ -18,23 +14,17 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
   const mealTimeKeys = Object.keys(meal_times);
   const flight_number = results?.flight_number;
   const flight_date = results?.flight_date;
-  const passenger_details = results?.passenger_details;
-  const weights_used = results?.weights_used;
   const original_counts = results?.original_counts;
   
   // Use pre-generated AI summaries from results (no need to fetch separately)
   useEffect(() => {
     if (results?.ai_summaries) {
-      console.log('[AI Summary] Using pre-generated summaries from results:', results.ai_summaries);
       setAiSummaries(results.ai_summaries);
-    } else {
-      console.log('[AI Summary] No pre-generated summaries found in results');
     }
   }, [results]);
   
   // Early return AFTER hooks
   if (!results || !results.meal_times) {
-    console.log('[ResultsDisplay] No results or meal_times, returning null');
     return null;
   }
 
@@ -137,7 +127,7 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
       }));
     
     const gradients = [
-      'from-purple-600 to-purple-700',
+      'from-primary to-primary/90',
       'from-yellow-500 to-yellow-600',
       'from-blue-500 to-blue-600',
       'from-green-500 to-green-600',
@@ -158,24 +148,24 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
         {/* Meal Time Header */}
         {hasMultipleMealTimes && (
           <div className="flex items-center gap-3 mb-4">
-            <MealIcon className="w-8 h-8 text-purple-600" />
-            <h2 className="text-3xl font-bold text-purple-900">{mealTime}</h2>
+            <MealIcon className="w-8 h-8 text-primary" />
+            <h2 className="text-3xl font-bold text-foreground">{mealTime}</h2>
           </div>
         )}
         
         {/* AI Analysis Card */}
-        <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 mb-6">
+        <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-primary/5 mb-6">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Brain className="w-6 h-6 text-blue-600" />
-              <CardTitle className="text-2xl text-purple-900">
+              <CardTitle className="text-2xl text-foreground">
                 {hasMultipleMealTimes ? `${mealTime} - AI Prediction Summary` : 'AI Prediction Summary'}
               </CardTitle>
             </div>
           </CardHeader>
           <CardContent>
             <div className="bg-white rounded-lg p-4 border border-blue-200">
-              <h3 className="font-semibold text-lg text-purple-900 mb-3 flex items-center gap-2">
+              <h3 className="font-semibold text-lg text-foreground mb-3 flex items-center gap-2">
                 <Lightbulb className="w-5 h-5 text-yellow-500" />
                 Why This Prediction?
               </h3>
@@ -187,11 +177,11 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
         </Card>
         
         {/* Planned vs Predicted Comparison */}
-        <Card className="border-2 border-purple-200 bg-gradient-to-br from-white to-purple-50 mb-6">
+        <Card className="border-2 border-primary/20 bg-gradient-to-br from-white to-primary/5 mb-6">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <TrendingUp className="w-6 h-6 text-purple-600" />
-              <CardTitle className="text-2xl text-purple-900">
+              <TrendingUp className="w-6 h-6 text-primary" />
+              <CardTitle className="text-2xl text-foreground">
                 Planned vs AI Recommended
               </CardTitle>
             </div>
@@ -213,7 +203,7 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Left Side - Vertical Bar Chart */}
               <div className="flex flex-col h-full">
-                <h3 className="text-lg font-semibold text-purple-900 mb-3">Meal Count Comparison</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">Meal Count Comparison</h3>
                 <div className="flex-1 flex flex-col">
                   <div className="relative flex-1" style={{ minHeight: '500px' }}>
                     <div className="absolute inset-x-0 bottom-12 top-8 flex justify-around items-end">
@@ -296,7 +286,7 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
                     </div>
                   </div>
                   
-                  <div className="flex gap-4 mt-3 pt-3 border-t border-purple-200">
+                  <div className="flex gap-4 mt-3 pt-3 border-t border-primary/20">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded bg-gradient-to-r from-orange-400 to-orange-500" />
                       <span className="text-xs font-medium text-gray-700">Planned</span>
@@ -311,7 +301,7 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
 
               {/* Right Side - Accuracy Cards */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-purple-900 mb-4">Ordering Analysis</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-4">Ordering Analysis</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {comparisonData.map((data, idx) => (
                     <motion.div
@@ -397,9 +387,9 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
         </Card>
         
         {/* Results Table */}
-        <Card className="border-2 border-purple-200">
+        <Card className="border-2 border-primary/20">
           <CardHeader>
-            <CardTitle className="text-2xl text-purple-900">
+            <CardTitle className="text-2xl text-foreground">
               {hasMultipleMealTimes ? `${mealTime} - Detailed Breakdown` : 'Detailed Meal Breakdown'}
             </CardTitle>
           </CardHeader>
@@ -408,18 +398,18 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="text-purple-900 font-bold">Rank</TableHead>
-                    <TableHead className="text-purple-900 font-bold">Protein Type</TableHead>
-                    <TableHead className="text-center text-purple-900 font-bold">Planned</TableHead>
-                    <TableHead className="text-center text-purple-900 font-bold">Proportion</TableHead>
-                    <TableHead className="text-center text-purple-900 font-bold">Recommended</TableHead>
+                    <TableHead className="text-foreground font-bold">Rank</TableHead>
+                    <TableHead className="text-foreground font-bold">Protein Type</TableHead>
+                    <TableHead className="text-center text-foreground font-bold">Planned</TableHead>
+                    <TableHead className="text-center text-foreground font-bold">Proportion</TableHead>
+                    <TableHead className="text-center text-foreground font-bold">Recommended</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {sortedProteins.map((row, idx) => {
                     const compData = comparisonData.find(d => d.protein === row.protein);
                     return (
-                      <TableRow key={row.protein} className="hover:bg-purple-50/50">
+                      <TableRow key={row.protein} className="hover:bg-primary/5/50">
                         <TableCell>
                           <div className={`
                             inline-flex items-center justify-center w-8 h-8 rounded-full font-bold text-white shadow-sm
@@ -447,7 +437,7 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
                             variant={idx === 0 ? 'default' : 'secondary'}
                             className={`
                               text-base px-4 py-1
-                              ${idx === 0 ? 'bg-purple-100 text-purple-900 border-2 border-purple-600' : 'bg-yellow-100 text-yellow-800 border border-yellow-300'}
+                              ${idx === 0 ? 'bg-primary/10 text-foreground border-2 border-primary' : 'bg-yellow-100 text-yellow-800 border border-yellow-300'}
                             `}
                           >
                             {row.percentage}%
@@ -467,8 +457,8 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
 
             {/* Visual Distribution Bar */}
             <div className="mt-8">
-              <h3 className="text-xl font-semibold text-purple-900 mb-4">Visual Distribution</h3>
-              <div className="flex h-16 rounded-lg overflow-hidden border-2 border-purple-300 shadow-md">
+              <h3 className="text-xl font-semibold text-foreground mb-4">Visual Distribution</h3>
+              <div className="flex h-16 rounded-lg overflow-hidden border-2 border-primary/30 shadow-md">
                 {sortedProteins.map((row, idx) => (
                   <div
                     key={row.protein}
@@ -536,9 +526,9 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
         className="text-center mb-8"
       >
         <div className="flex justify-center mb-4">
-          <CheckCircle2 className="w-20 h-20 text-purple-600" />
+          <CheckCircle2 className="w-20 h-20 text-primary" />
         </div>
-        <h2 className="text-4xl font-bold text-purple-900 mb-3">
+        <h2 className="text-4xl font-bold text-foreground mb-3">
           Prediction Complete
         </h2>
         <p className="text-xl text-gray-600">
@@ -561,12 +551,12 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
         transition={{ delay: 0.2 }}
         className="mb-8"
       >
-        <Card className="border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-blue-50">
+        <Card className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 to-blue-50">
           <CardContent className="py-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="text-center">
                 <div className="text-sm font-medium text-gray-600 mb-1">Cabin Class</div>
-                <div className="text-3xl font-bold text-purple-900">{cabin_class} Class</div>
+                <div className="text-3xl font-bold text-foreground">{cabin_class} Class</div>
                 <div className="text-xs text-gray-500 mt-1">Passenger cabin</div>
               </div>
               <div className="text-center">
@@ -584,7 +574,7 @@ function ResultsDisplay({ results, selectedFlight, flightDate }) {
 
       {/* Export Button */}
       <div className="flex justify-end mb-6">
-        <Button onClick={handleExport} size="md" className="bg-purple-600 hover:bg-purple-700">
+        <Button onClick={handleExport} size="md" className="bg-primary hover:bg-primary/90">
           <Download className="w-4 h-4 mr-2" />
           Export Results
         </Button>
