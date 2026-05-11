@@ -1,0 +1,29 @@
+# Override file for AWS CloudWatch logging
+# This file is used when LOG_DRIVER=awslogs
+services:
+  redis:
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: "${AWS_DEFAULT_REGION:-ap-southeast-1}"
+        awslogs-group: "${AWS_LOG_GROUP}"
+        awslogs-stream: "redis-${HOSTNAME:-unknown}"
+        tag: "service=redis,environment=${ENV:-dev}"
+
+  backend:
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: "${AWS_DEFAULT_REGION:-ap-southeast-1}"
+        awslogs-group: "${AWS_LOG_GROUP}"
+        awslogs-stream: "backend-${HOSTNAME:-unknown}"
+        tag: "service=backend,environment=${ENV:-dev}"
+
+  frontend:
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: "${AWS_DEFAULT_REGION:-ap-southeast-1}"
+        awslogs-group: "${AWS_LOG_GROUP}"
+        awslogs-stream: "frontend-${HOSTNAME:-unknown}"
+        tag: "service=frontend,environment=${ENV:-dev}"

@@ -1,0 +1,26 @@
+# Override file for JSON logging (local logs)
+# This file is used when LOG_DRIVER=json
+services:
+  redis:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=redis,environment=${ENV:-dev}"
+
+  backend:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=backend,environment=${ENV:-dev}"
+
+  frontend:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=frontend,environment=${ENV:-dev}"

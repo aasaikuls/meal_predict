@@ -1,4 +1,18 @@
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: meal-prediction-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - meal-prediction-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
   backend:
     build:
       context: ./backend
@@ -6,21 +20,28 @@ services:
     container_name: meal-prediction-backend
     ports:
       - "8001:8001"
-    volumes:
-      - ./Age.csv:/data/Age.csv
-      - ./Destination.csv:/data/Destination.csv
-      - ./MealTime.csv:/data/MealTime.csv
-      - ./Nationality.csv:/data/Nationality.csv
-      - ./customers.csv:/data/customers.csv
-      - ./meal_df_new.csv:/data/meal_df_new.csv
-      - ./PredictionResults:/data/PredictionResults
     environment:
       - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_PORT=${MYSQL_PORT:-3306}
+      - MYSQL_USER=${MYSQL_USER:-meal_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-meal_password}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-meal_prediction}
+      - REDIS_URL=redis://redis:6379/0
+      - LLM_PROVIDER=${LLM_PROVIDER:-kariba}
+      - KARIBA_API_URL=${KARIBA_API_URL:-https://api.nonprod.kariba.de.sin.auto2.nonprod.c0.sq.com.sg/api/v2/call-llm/}
+      - KARIBA_MODEL=${KARIBA_MODEL:-GPT5-mini}
       - BEDROCK_BASE_URL=${BEDROCK_BASE_URL:-https://bedrock-runtime.ap-southeast-1.amazonaws.com}
       - BEDROCK_MODEL=${BEDROCK_MODEL:-apac.anthropic.claude-sonnet-4-20250514-v1:0}
       - LLM_USER_TOKEN=${LLM_USER_TOKEN}
+    volumes:
+      - ./.docs/mag_data_files:/data:ro
     networks:
       - meal-prediction-network
+    depends_on:
+      redis:
+        condition: service_healthy
     restart: unless-stopped
 
   frontend:
@@ -31,7 +52,7 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - REACT_APP_API_URL=http://localhost:8001
+      - REACT_APP_THEME=${REACT_APP_THEME:-purple}
       - PORT=3001
       - CHOKIDAR_USEPOLLING=true
     networks:
@@ -45,3 +66,4 @@ services:
 networks:
   meal-prediction-network:
     driver: bridge
+
