@@ -45,9 +45,10 @@ inject_secret() {
 # ----------------------------------------
 echo ""
 echo "========================================"
-echo "Setting up .env file"
+echo "Setting up .env files"
 echo "========================================"
-setup_env ".env.example" ".env"
+setup_env ".env.example"             ".env"
+setup_env "frontend/.env.example"    "frontend/.env"
 
 # ----------------------------------------
 # Step 2: Inject secrets from AWS Secrets Manager
