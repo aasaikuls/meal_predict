@@ -12,7 +12,6 @@ ENV/
 htmlcov/
 *.egg-info/
 Lib/
-Scripts/
 pyvenv.cfg
 
 # ── Node / Frontend ───────────────────────────────────────────────
