@@ -31,6 +31,7 @@ def create_app() -> FastAPI:
         title=settings.app_title,
         version=settings.app_version,
         lifespan=lifespan,
+        root_path="/smartcatering",
     )
 
     app.add_middleware(

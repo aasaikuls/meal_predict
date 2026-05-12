@@ -49,8 +49,8 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: meal-prediction-frontend
-    ports:
-      - "3001:3001"
+    expose:
+      - "3001"
     environment:
       - REACT_APP_THEME=${REACT_APP_THEME:-purple}
       - PORT=3001
@@ -62,6 +62,20 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
+
+  nginx:
+    image: nginx:alpine
+    container_name: meal-prediction-nginx
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - meal-prediction-network
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
 
 networks:
   meal-prediction-network:

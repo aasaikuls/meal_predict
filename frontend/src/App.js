@@ -22,7 +22,7 @@ function App() {
   return (
     <ThemeProvider>
     <ToastProvider>
-      <Router>
+      <Router basename="/smartcatering">
         <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-gold-50">
           {/* Background pattern overlay */}
           <div className="fixed inset-0 opacity-[0.03] pointer-events-none">
